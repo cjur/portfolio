@@ -16,7 +16,7 @@ header {
     padding: 10px 0;
     padding-top: 15px;
     text-align: center;
-    box-shadow: inset 0 0 10px 1px #3b32be, inset 0 0 3px 1px #dac6ffa6,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
+    box-shadow: inset 0 0 20px 2px #3b2ef5, inset 0 0 8px 0 #dac6ff,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
     border-radius: 10px;
     margin-bottom: 20px;
     margin-left: 20px;
@@ -37,7 +37,7 @@ nav {
     text-align: center;
     padding: 18px 18px;
     background: linear-gradient(60deg, #100c3f 0%, #050414 100%);
-    box-shadow: inset 0 0 10px 1px #3b32be, inset 0 0 3px 1px #dac6ffa6,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
+    box-shadow: inset 0 0 20px 2px #3b2ef5, inset 0 0 8px 0 #dac6ff,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
     border-radius: 10px;
     margin: 20px;
     line-height: 30px;
@@ -79,7 +79,7 @@ footer {
     text-align: center;
     padding: 20px 10%;
     background: linear-gradient(60deg, #100c3f 0%, #050414 100%);
-    box-shadow: inset 0 0 10px 1px #3b32be, inset 0 0 3px 1px #dac6ffa6,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
+    box-shadow: inset 0 0 20px 2px #3b2ef5, inset 0 0 8px 0 #dac6ff,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
     border-radius: 10px;
     margin: 20px;
     color: #fff;
@@ -93,7 +93,7 @@ h1 {
 
 h2 {
     font-weight: 400;
-    margin: 0;
+    margin: 0px;
 }
 
 @keyframes gradient-animation {
@@ -111,7 +111,7 @@ h2 {
   .animated-gradient {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(45deg, #050414 0%,#3b32be 4%,#100c3f 10%,#815bff 20%,#3b32be 45%,#100c3f 55%,#815bff 80%,#d0cdff 90%, #050414 100%);
+    background: linear-gradient(45deg, #050414 0%,#3b32be 15%,#100c3f 25%,#815bff 35%,#3b32be 45%,#100c3f 55%,#815bff 80%,#d0cdff 90%, #050414 100%);
     background-size: 400% 400%;
-    animation: gradient-animation 20s ease infinite;
+    animation: gradient-animation 25s ease infinite;
   }
