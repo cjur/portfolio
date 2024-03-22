@@ -1,0 +1,85 @@
+body {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+    margin: 0;
+    padding: 0;
+    background-color: #cecce6;
+}
+
+header {
+    background: linear-gradient(60deg, #100c3f 0%, #050414 100%);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: inset 0 0 10px 1px #3b32be, inset 0 0 3px 1px #dac6ffa6,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+header h1:hover {
+    text-shadow: 0 0 10px rgba(134, 96, 238, 1);
+    font-weight: 500;
+    transition-property: all;
+    transition-duration: 1.2s;
+    transition-timing-function:ease;
+}
+
+nav {
+    text-align: center;
+    padding: 18px 0;
+    background: linear-gradient(60deg, #100c3f 0%, #050414 100%);
+    box-shadow: inset 0 0 10px 1px #3b32be, inset 0 0 3px 1px #dac6ffa6,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+nav a:hover {
+    background: linear-gradient(60deg, #1d1868b4 0%, #050414 100%);
+    border-radius: 20px;
+    box-shadow: 0 0 10px #2b248a9d, inset 0 0 5px 3px #2b248a9d;
+    transition-property: all;
+    transition-duration: 1.2s;
+    transition-timing-function:ease;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+h2 {
+    font-weight: 400;
+}
