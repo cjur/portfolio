@@ -34,19 +34,19 @@ header :hover {
 }
 
 nav {
-    text-align: center;
     padding: 18px 18px;
     background: linear-gradient(60deg, #100c3f 0%, #050414 100%);
     box-shadow: inset 0 0 20px 2px #3b2ef5, inset 0 0 8px 0 #dac6ff,0 0 3px 1px #fff, 0 0 10px 4px #665bff;
     border-radius: 10px;
     margin: 20px;
-    line-height: 30px;
+    text-align: center;
+    line-height: 40px;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 12px 30px;
     border-radius: 10px;
 }
 
@@ -58,7 +58,6 @@ nav a:hover {
     transition-duration: 1.2s;
     transition-timing-function:ease;
 }
-
 .selectednav {
     border-radius: 20px;
     box-shadow: 0 0 10px #2b248adb, inset 0 0 6px 3px #2b248a, inset 0 0 1px 1px #fff, 0 0 1px 1px #fff;
