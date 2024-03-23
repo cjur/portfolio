@@ -46,14 +46,22 @@ nav {
 nav a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 10px;
+    padding: 10px 20px;
     border-radius: 10px;
 }
 
 nav a:hover {
     border-radius: 20px;
-    box-shadow: 0 0 10px #2b248adb, inset 0 0 6px 3px #2b248a, inset 0 0 1px 1px #fff, 0 0 2px #fff;
-    font-weight: 700;
+    box-shadow: 0 0 10px #2b248adb, inset 0 0 6px 3px #2b248a, inset 0 0 1px 1px #fff, 0 0 1px 1px #fff;
+    letter-spacing: -0.2px;
+    transition-property: all;
+    transition-duration: 1.2s;
+    transition-timing-function:ease;
+}
+
+.selectednav {
+    border-radius: 20px;
+    box-shadow: 0 0 10px #2b248adb, inset 0 0 6px 3px #2b248a, inset 0 0 1px 1px #fff, 0 0 1px 1px #fff;
     letter-spacing: -0.2px;
     transition-property: all;
     transition-duration: 1.2s;
@@ -115,3 +123,29 @@ h2 {
     background-size: 400% 400%;
     animation: gradient-animation 25s ease infinite;
   }
+
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;  /* Start from the left, out of sight */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(65deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.733) 50%, rgba(255, 255, 255, 0) 80%);
+    transition: all 9s;
+    mix-blend-mode: overlay; /* Choose a blend mode that suits your design */
+  }
+  @keyframes shine-move {
+    to {
+      left: 100%;
+    }
+  }
+  
+  .shine-effect::before {
+    animation: shine-move 9s infinite;
+  }
+  
