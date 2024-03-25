@@ -1,53 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corey Jurasek</title>
-    <link rel="stylesheet" href="Assets/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+  <title>Your Name - Portfolio</title>
 </head>
-<body class="animated-gradient">
-    <header class="shine-effect">
-        <div><h1>Corey Jurasek</h1></div>
-    </header>
-    
-    <nav>
-        
-        <a href="index.html" class="selectednav">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-        
-    </nav>
-    <div class="container">
-        <section id="about" class="grid-item">
-            <h2>About Me</h2>
-            <p>Hi, I'm Corey Jurasek, .</p>
-        </section>
-        <section id="projects" class="grid-item">
-            <h2>Recent Projects</h2>
-            <p>UMaine Football Internship</p>
-            <a href="">View</a>
-            <p>UMaine eSports Arena</p>
-            <a href="">View</a>
-            <p>UMaine CSI Marketing and Graphic Design</p>
-            <a href="">View</a>
-            <p>More Projects</p>
-            <a href="">View</a>
-
-        </section>
-        <section id="contact" class="grid-item">
-            <h2>Contact</h2>
-            <p>You can contact me at: <a href="mailto:coreyjurasek@gmail.com">coreyjurasek@gmail.com</a></p>
-        </section>
+<body>
+  <header>
+    <div class="logo-and-name">
+      <img src="../assets/images/logo.png" alt="logo">
+      <span>Corey Jurasek</span>
     </div>
-    <footer class="shine-effect">
-        &copy; 2024 Corey Jurasek
-    </footer>
-    <script src="assets/js/script.js"></script>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav id="dropdownMenu" class="dropdown-menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="video-wrapper">
+        <video width="100%" height="auto" muted autoplay loop>
+        <source src="Assets/videos/background animation for portfolio.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-overlay">
+        <div class="text-content">
+        <h1>Hi, Im corey!</h1>
+        <p>Welcome to my portfolio, take a look around you will find my work and links to other projects I'm working on. If you have any questions feel free to reach out to me.</p>
+        </div>
+    </div>
+    </div>
+    <div class="grid-container">
+            <div class="grid-item">
+            <h1>About me</h1>
+            <p>Click the button below to be brought to my about page which houses my resume, short introduction and history of my creative work.</p>
+            <button>icon:person</button>
+            </div>
+            <div class="grid-item">
+            <h1>recent Projects</h1>
+            <ol><a href="#contact">Project 1</a></ol>
+            <ol><a href="#contact">Project 1</a></ol>
+            <ol><a href="#contact">Project 1</a></ol>
+            <ol><a href="#contact">Project 1</a></ol>
+            <p>Here are some of my recent projects, to view the full list of my projects click here.</p>
+            <button>icon:project</button>
+        </div>
+    </div>
+    
+    
+  </main>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
