@@ -91,6 +91,17 @@ footer {
   margin-bottom: 10px;
 }
 
+a {
+  color: rgb(92, 160, 255);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover{
+  font-weight: 600;
+  color: rgb(61, 118, 199);
+}
+
 @media (min-width: 768px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
