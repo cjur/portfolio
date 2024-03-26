@@ -168,3 +168,21 @@ a:hover{
   margin: 0;
   max-width: 350px;
 }
+
+ol{
+  padding-left: 0px;
+  padding-bottom: 5px;
+  margin-bottom: -10px;
+  border-bottom: solid 1px rgb(92, 160, 255);
+}
+
+.fade-in{
+  opacity: 0;
+  transform: translateY(30%);
+  transition: all 0.8s cubic-bezier(0,.43,1,.53);
+}
+
+.active{
+  opacity: 1;
+  transform:translateY(0);
+}
