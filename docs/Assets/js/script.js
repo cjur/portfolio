@@ -1,7 +1,9 @@
 
 document.querySelectorAll('.grid-item').forEach(item => {
     item.addEventListener('click', function() {
-      this.classList.toggle('expanded');
+      if (window.innerWidth > 768) {
+        this.classList.toggle('expanded');
+      }
     });
   });
   
