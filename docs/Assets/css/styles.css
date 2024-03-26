@@ -120,13 +120,12 @@ footer {
   padding-top: 56.25%; /* Aspect ratio (16:9) - Adjust if your video has a different aspect ratio */
 }
 
-.video-wrapper iframe,
 .video-wrapper video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .video-overlay {
