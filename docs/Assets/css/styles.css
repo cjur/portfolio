@@ -127,8 +127,8 @@ a:hover{
 
 .video-wrapper {
   position: relative;
-  width: 100%; /* Adjust based on your preference */
-  padding-top: 56.25%; /* Aspect ratio (16:9) - Adjust if your video has a different aspect ratio */
+  width: 100%;
+  padding-top: 56.25%;
 }
 
 .video-wrapper video {
@@ -137,6 +137,7 @@ a:hover{
   left: 0;
   width: 100%;
   height: auto;
+  overflow: hidden;
 }
 
 .video-overlay {
