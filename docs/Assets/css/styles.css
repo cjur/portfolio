@@ -179,7 +179,7 @@ ol{
 .fade-in{
   opacity: 0;
   transform: translateY(50%);
-  transition: all 1.2s cubic-bezier(0,.43,1,.53);
+  transition: all 0.6s cubic-bezier(0,.43,1,.53);
 }
 
 .active{
