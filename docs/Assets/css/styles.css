@@ -10,7 +10,8 @@ body {
 
 h1{
   font-family: 'Syne', sans-serif;
-
+  margin: 20px;
+  text-transform: uppercase;
 }
 
 header {
@@ -32,7 +33,7 @@ footer {
   border: 1px solid #000;
   align-items: center;
   height: 50px;
-  margin: 10px;
+  margin: 20px;
 }
 
 .logo-and-name {
@@ -83,14 +84,6 @@ footer {
   display: block;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 10px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
 a {
   color: rgb(92, 160, 255);
   font-weight: 600;
@@ -100,29 +93,6 @@ a {
 a:hover{
   font-weight: 600;
   color: rgb(61, 118, 199);
-}
-
-@media (min-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.grid-item {
-  background: #fff;
-  border: 1px solid #000000;
-  padding: 20px;
-  cursor: pointer;
-}
-
-.grid-item.expanded {
-  grid-column: span 2;
 }
 
 .video-wrapper {
@@ -170,7 +140,7 @@ a:hover{
 }
 
 ol{
-  padding-left: 0px;
+  padding-left: 20pxpx;
   padding-bottom: 5px;
   margin-bottom: -10px;
   border-bottom: solid 1px rgb(92, 160, 255);
@@ -185,4 +155,20 @@ ol{
 .active{
   opacity: 1;
   transform:translateY(0);
+}
+
+p {
+  margin: 20px;
+}
+
+button{
+  margin: 20px;
+  background-color: #000000;
+  border: none;
+  color:#fff;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
 }
