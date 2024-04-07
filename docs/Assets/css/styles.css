@@ -14,6 +14,12 @@ h1{
   text-transform: uppercase;
 }
 
+.gradienttext{
+  background: -webkit-linear-gradient(180deg, #27242e 80%, #d84c6d 90%, #4283d1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 h2{
   font-family: 'Syne',sans-serif;
   margin-left: 20px;
