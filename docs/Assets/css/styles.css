@@ -22,9 +22,8 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: #fff;
+  background: linear-gradient(290deg,#27242e 30%,#d84c6d,#4283d1);
   position: relative;
-  border-bottom: 1px solid #000;
   align-items: center;
 }
 
@@ -56,6 +55,7 @@ footer {
 
 .menu-icon{
   font-size: 21px;
+  color:#fff;
 }
 
 .dropdown-menu {
