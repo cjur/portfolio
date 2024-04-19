@@ -87,10 +87,7 @@ footer {
 }
 
 .dropdown-menu ul li:hover{
-  background-color: #242424;
-}
-.dropdown-menu ul li a:hover{
-  color:#fff;
+  background-color: #dcdcdc;
 }
 
 .dropdown-menu ul li a {

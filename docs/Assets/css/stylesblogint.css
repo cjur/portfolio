@@ -1,0 +1,17 @@
+.media-container{
+    max-width: 80%;
+    margin:auto;
+    display:block;
+}
+
+.media-container img,
+.media-container video {
+    width:80%;
+    height: auto;
+    max-width: 100%;
+}
+
+.styleblog {
+    display: block;
+    margin: auto;
+}
