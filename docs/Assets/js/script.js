@@ -42,3 +42,28 @@ let observer = new IntersectionObserver(callbacks,options);
 elements.forEach(element =>{
   observer.observe(element);
 });
+
+
+function animateSkills() {
+  const skills = document.querySelectorAll('.skill-bar');
+  const widths = {
+      'novice': '20%',
+      'adv-beginner': '40%',
+      'competent': '60%',
+      'proficient': '80%',
+      'expert': '100%'
+  };
+
+  skills.forEach(skill => {
+      const classes = skill.className.split(' ');
+      classes.forEach(cls => {
+          if (widths[cls]) {
+              setTimeout(() => {
+                  skill.style.width = widths[cls];
+              }, 100);
+          }
+      });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", animateSkills);
