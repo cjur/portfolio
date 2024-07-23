@@ -249,7 +249,7 @@ button{
   width: 100px; /* Adjust size of light effect */
   height: 100px; /* Adjust size of light effect */
   border-radius: 50%;
-  background-color: rgba(106, 190, 250, 0.808);
+  background:radial-gradient(circle, rgba(106, 190, 250, 0.808) 0%,rgba(255, 192, 203, 0.808) 50%);
   mix-blend-mode: lighten;
   pointer-events: none;
   transform: translate(-50%, -50%);
