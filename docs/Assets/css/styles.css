@@ -3,7 +3,7 @@
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: white;
-  color: black;
+  color: #1a1a1a;
   margin: 0;
   padding: 0;
 }
@@ -39,7 +39,7 @@ footer {
   padding: 20px;
   background-color: #fff;
   position: relative;
-  border: 1px solid #000;
+  border: 1px solid #1a1a1a;
   border-radius: 10px;
   align-items: center;
   height: 50px;
@@ -83,7 +83,7 @@ footer {
 
 .dropdown-menu ul li {
   padding: 6px 10px;
-  border: 1px solid #000000;
+  border: 1px solid #1a1a1a;
   background-color: #ffffffdf;
   border-radius: 10px;
   margin-bottom: 4px;
@@ -97,7 +97,7 @@ footer {
 
 .dropdown-menu ul li a {
   text-decoration: none;
-  color: black;
+  color: #1a1a1a;
   display: block;
 }
 
@@ -137,7 +137,7 @@ a:hover{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000; /* Text color */
+  color: #1a1a1a; /* Text color */
 }
 
 .video-overlay p {
@@ -148,7 +148,7 @@ a:hover{
 
 .text-content {
   text-align: center;
-  color: #000; /* Adjust text color as needed */
+  color: #1a1a1a; /* Adjust text color as needed */
 }
 
 .text-content p {
@@ -182,7 +182,7 @@ button{
   font-family: 'DM Sans', sans-serif;
   text-transform: uppercase;
   margin-left: 20px;
-  background-color: #000000;
+  background-color: #1a1a1a;
   border: none;
   color:#fff;
   padding: 5px 15px;
@@ -197,7 +197,7 @@ button{
   list-style-type: none;
   margin: 0;
   overflow: hidden;
-  background-color: #000;
+  background-color: #1a1a1a;
   padding: 5px 20px;
 }
 
@@ -240,4 +240,20 @@ button{
 .skill-text {
   margin-left: 20px;
   margin-top: 8px;
+}
+
+#light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px; /* Adjust size of light effect */
+  height: 100px; /* Adjust size of light effect */
+  border-radius: 50%;
+  background-color: rgba(233, 246, 255, 0.797);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  opacity: 0; /* Initially hidden */
+  filter: blur(30px);
 }

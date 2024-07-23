@@ -67,3 +67,22 @@ function animateSkills() {
 }
 
 document.addEventListener("DOMContentLoaded", animateSkills);
+
+
+//Light following cursor
+
+document.addEventListener('mousemove', function(e) {
+  const light = document.getElementById('light');
+  light.style.left = `${e.pageX}px`;
+  light.style.top = `${e.pageY}px`;
+});
+
+document.addEventListener('mouseenter', function() {
+  const light = document.getElementById('light');
+  light.style.opacity = 1; // Show the light
+});
+
+document.addEventListener('mouseleave', function() {
+  const light = document.getElementById('light');
+  light.style.opacity = 0; // Hide the light
+});
