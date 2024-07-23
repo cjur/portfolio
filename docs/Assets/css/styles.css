@@ -249,8 +249,8 @@ button{
   width: 100px; /* Adjust size of light effect */
   height: 100px; /* Adjust size of light effect */
   border-radius: 50%;
-  background-color: rgba(233, 246, 255, 0.797);
-  mix-blend-mode: screen;
+  background-color: rgba(106, 190, 250, 0.808);
+  mix-blend-mode: lighten;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
