@@ -89,10 +89,10 @@ document.addEventListener('mouseleave', function() {
 
 //tilt for header and footer
 
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
   const footer = document.getElementById('footer');
+
 
   const handleMouseMove = (element, event) => {
       const { offsetX, offsetY, target } = event;
@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
   header.addEventListener('mousemove', (e) => handleMouseMove(header, e));
   footer.addEventListener('mousemove', (e) => handleMouseMove(footer, e));
 
+
   header.addEventListener('mouseleave', () => resetTransform(header));
   footer.addEventListener('mouseleave', () => resetTransform(footer));
+
 });

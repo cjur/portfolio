@@ -45,7 +45,7 @@ footer {
   border: 1px solid #1a1a1a;
   border-radius: 10px;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
   perspective: 1000px;
   transition: transform 1s ease;
   z-index: 1;
@@ -253,11 +253,30 @@ button{
   width: 100px; /* Adjust size of light effect */
   height: 100px; /* Adjust size of light effect */
   border-radius: 50%;
-  background:radial-gradient(circle, rgb(72, 177, 252) 0%,rgb(251, 61, 134) 65%);
+  background:radial-gradient(circle, rgb(32, 162, 255) 0%,rgb(255, 44, 125) 65%);
   mix-blend-mode: lighten;
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
   opacity: 0; /* Initially hidden */
   filter: blur(14px);
+}
+
+.portcards {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border: 1px solid #242424;
+  position: relative;
+  align-items: left;
+  margin: 10px;
+  border-radius: 10px;
+  perspective: 1000px;
+  transition: transform 1s ease;
+  z-index: 1;
+}
+
+.portcardimg {
+  margin: 20px;
+  border-radius: 6px;
 }
