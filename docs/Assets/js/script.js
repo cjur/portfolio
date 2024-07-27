@@ -88,33 +88,35 @@ document.addEventListener('mouseleave', function() {
 });
 
 //tilt for header and footer
-
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
   const footer = document.getElementById('footer');
-
+  const portcards = document.querySelectorAll('.portcards'); // Select all elements with the class 'portcards'
 
   const handleMouseMove = (element, event) => {
-      const { offsetX, offsetY, target } = event;
-      const { offsetWidth, offsetHeight } = target;
-      const halfWidth = offsetWidth / 2;
-      const halfHeight = offsetHeight / 2;
-      
-      const rotateX = ((offsetY - halfHeight) / halfHeight) * -10; // 10 degrees max rotation
-      const rotateY = ((offsetX - halfWidth) / halfWidth) * 15; // -10 degrees max rotation
+    const { offsetX, offsetY, target } = event;
+    const { offsetWidth, offsetHeight } = target;
+    const halfWidth = offsetWidth / 2;
+    const halfHeight = offsetHeight / 2;
+    
+    const rotateX = ((offsetY - halfHeight) / halfHeight) * -10; // 10 degrees max rotation
+    const rotateY = ((offsetX - halfWidth) / halfWidth) * 15; // 10 degrees max rotation
 
-      element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
   const resetTransform = (element) => {
-      element.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    element.style.transform = 'rotateX(0deg) rotateY(0deg)';
   };
 
   header.addEventListener('mousemove', (e) => handleMouseMove(header, e));
   footer.addEventListener('mousemove', (e) => handleMouseMove(footer, e));
 
-
   header.addEventListener('mouseleave', () => resetTransform(header));
   footer.addEventListener('mouseleave', () => resetTransform(footer));
 
+  portcards.forEach(portcard => {
+    portcard.addEventListener('mousemove', (e) => handleMouseMove(portcard, e));
+    portcard.addEventListener('mouseleave', () => resetTransform(portcard));
+  });
 });
