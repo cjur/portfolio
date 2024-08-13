@@ -117,7 +117,6 @@ a:hover{
 
 .video-wrapper {
   position: relative;
-  width: 100%;
   padding-top: 56.25%;
 }
 
@@ -287,4 +286,10 @@ button{
 .porttop{
   margin-top: 45px;
   margin-bottom: 45px;
+}
+
+.landing{
+  font-size: 50px;
+  text-align: left;
+  margin: 20px;
 }
