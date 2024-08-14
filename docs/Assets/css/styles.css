@@ -10,16 +10,16 @@ body {
 
 h1{
   font-family: 'Syne', sans-serif;
-  margin: 20px;
+  margin: 30px;
 }
 
 h2{
   font-family: 'Syne',sans-serif;
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 h3{
-  margin-left: 20px;
+  margin-left: 30px;
 }
 header {
   display: flex;
@@ -28,7 +28,8 @@ header {
   border: 1px solid #242424;
   position: relative;
   align-items: center;
-  margin: 10px;
+  margin: 20px;
+  margin-bottom: 40px;
   border-radius: 10px;
   perspective: 1000px;
   transition: transform 1s ease;
@@ -44,7 +45,8 @@ footer {
   border: 1px solid #1a1a1a;
   border-radius: 10px;
   align-items: center;
-  margin: 10px;
+  margin: 20px;
+  margin-top: 40px;
   perspective: 1000px;
   transition: transform 1s ease;
   z-index: 1;
@@ -53,6 +55,7 @@ footer {
 .logo-and-name {
   display: flex;
   align-items: center;
+  margin-left: 1%;
 }
 
 .logo-and-name img {
@@ -66,7 +69,7 @@ footer {
 
 .menu-icon{
   font-size: 21px;
-  padding-right: 10px;
+  padding-right: 20px;
 }
 
 .dropdown-menu {
@@ -81,7 +84,7 @@ footer {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .dropdown-menu ul li {
@@ -177,22 +180,21 @@ ol{
 }
 
 p {
-  margin: 20px;
+  margin: 30px;
 }
 
 button{
   font-family: 'DM Sans', sans-serif;
-  text-transform: uppercase;
-  margin-left: 20px;
-  background-color: #1a1a1a;
+  margin-left: 30px;
+  background: linear-gradient( 140deg, rgb(77, 77, 77) 0%,#1a1a1a 50%);
   border: none;
   color:#fff;
-  padding: 5px 15px;
+  padding: 8px 24px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 .horizontalmenu{
@@ -229,11 +231,11 @@ button{
 }
 
 .skill-bar {
-  height: 20px;
+  height: 10px;
   background: linear-gradient(90deg,#d84c6d, #4283d1);
   border-radius: 5px;
   text-align: right;
-  line-height: 20px;
+  line-height: 10px;
   color: white;
   width: 0%;
   transition: width 2s ease-out;
@@ -267,7 +269,7 @@ button{
   border: 1px solid #242424;
   position: relative;
   align-items: left;
-  margin: 10px;
+  margin: 25px;
   border-radius: 10px;
   perspective: 1000px;
   transition: transform 1s ease;
@@ -292,4 +294,7 @@ button{
   font-size: 35px;
   text-align: left;
   margin: 20px;
+}
+
+.experience{
 }
