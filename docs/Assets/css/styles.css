@@ -84,7 +84,8 @@ footer {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-right: 20px;
+  margin-top: 10px;
+  margin-right: 35px;
 }
 
 .dropdown-menu ul li {
@@ -98,7 +99,9 @@ footer {
 }
 
 .dropdown-menu ul li:hover{
-  background-color: #dcdcdc;
+  background-color: #1a1a1a;
+  color:#fff;
+  transition: ease-in-out 1s;
 }
 
 .dropdown-menu ul li a {
@@ -107,6 +110,11 @@ footer {
   display: block;
 }
 
+.dropdown-menu ul li :hover{
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+}
 a {
   color: rgb(92, 160, 255);
   font-weight: 600;
@@ -195,31 +203,6 @@ button{
   display: inline-block;
   font-size: 12px;
   border-radius: 50px;
-}
-
-.horizontalmenu{
-  list-style-type: none;
-  margin: 0;
-  overflow: hidden;
-  background-color: #1a1a1a;
-  padding: 5px 20px;
-}
-
-.horizontalmenul{
-  float: left;
-  font-style: normal;
-}
-
-.horizontalmenul a{
-  display: block;
-  padding: 10px;
-  text-align: center;
-  color: #fff;
-}
-
-.horizontalmenul :hover{
-  background-color: #242424;
-  border-radius: 5px;
 }
 
 .skill {
