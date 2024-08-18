@@ -214,19 +214,19 @@ button{
 }
 
 .skill-bar {
-  height: 10px;
+  height: 5px;
   background: linear-gradient(90deg,#d84c6d, #4283d1);
   border-radius: 5px;
   text-align: right;
   line-height: 10px;
   color: white;
   width: 0%;
-  transition: width 2s ease-out;
+  transition: width 6s ease-in-out;
 }
 
 .skill-text {
   margin-left: 20px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 #light {
@@ -274,7 +274,11 @@ button{
 }
 
 .landing{
-  font-size: 35px;
-  text-align: left;
+  text-align: center;
   margin: 20px;
+}
+
+.programknowledge{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
 }
