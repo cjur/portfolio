@@ -251,18 +251,19 @@ button{
 }
 
 .portcards {
-  display: flex;
-  justify-content: space-between;
+  display: flexbox;
+  justify-content:left;
   padding: 5px;
   border: 1px solid #242424;
   position: relative;
   align-items: left;
-  margin: 25px;
+  margin: 20px;
   border-radius: 10px;
   perspective: 1000px;
   transition: transform 1s ease;
   z-index: 1;
 }
+
 
 .portcards:hover {
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
