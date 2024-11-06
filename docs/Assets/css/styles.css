@@ -106,7 +106,7 @@ footer {
   transition: ease-in-out 1s;
 }
 
-.dropdown-menu ul li a {
+.dropdown-menu ul a li {
   text-decoration: none;
   color: #1a1a1a;
   display: block;
