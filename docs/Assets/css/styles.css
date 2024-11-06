@@ -248,7 +248,7 @@ button{
   margin: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .container {
     flex-direction: row;
     flex-wrap: wrap;
@@ -269,7 +269,7 @@ button{
   }
 }
 
-@media (min-width: 1600px){
+@media (min-width: 1920px){
   .portcards{
     width: 45.8vw;
   }
