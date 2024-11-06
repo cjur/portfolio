@@ -274,14 +274,12 @@ button{
 
 .landing{
   text-align: left;
-  margin: 20px;
 }
 
 .landing p{
-  margin-left: 30px;
-  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-bottom: 7px;
 }
-
 .programknowledge{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
