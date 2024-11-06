@@ -314,6 +314,7 @@ button{
 .programknowledge{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  padding-top: 30px;
 }
 
 .carousel {
@@ -359,8 +360,12 @@ button{
   pointer-events: none;
 }
 
+.aboutpage .portcards{
+  margin-bottom:20px;
+}
+
 .aboutpage p{
-  margin-left: 30px; 
+  margin-left: 20px;
 }
 
 .contactbut {
@@ -369,4 +374,8 @@ button{
 
 .pointernone{
   pointer-events: none;
+}
+
+.profile{
+  margin-left: 20px;
 }
