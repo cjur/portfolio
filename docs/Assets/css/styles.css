@@ -34,8 +34,15 @@ header {
   margin-bottom: 40px;
   border-radius: 10px;
   perspective: 1000px;
-  transition: transform 1s ease;
+  transition: transform 2s ease;
   z-index: 101;
+}
+
+header:hover {
+  background: linear-gradient(0deg,#dde6ffb6, #ffffff);
+  box-shadow:  inset 0px 0px 20px #ffffff;
+  box-shadow: -5px 5px 20px#aebddd73;
+  transition: 2s ease;
 }
 
 footer {
@@ -52,6 +59,13 @@ footer {
   perspective: 1000px;
   transition: transform 1s ease;
   z-index: 1;
+}
+
+footer:hover {
+  background: linear-gradient(0deg,#dde6ffb6, #ffffff);
+  box-shadow:  inset 0px 0px 20px #ffffff;
+  box-shadow: -5px 5px 20px#aebddd73;
+  transition: 2s ease;
 }
 
 .logo-and-name {
@@ -267,7 +281,8 @@ button{
 .portcards:hover {
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
-  transition: transform 1s ease-in-out;
+  box-shadow: -5px 5px 20px#aebddd73;
+  transition: transform 2s ease;
 }
 
 .portcardimg {
