@@ -264,11 +264,17 @@ button{
   .portcards{
     width: 40vw;
   }
+  .experience .portcards{
+    width: 95vw;
+  }
 }
 
 @media (min-width: 1600px){
   .portcards{
     width: 45.8vw;
+  }
+  .experience .portcards{
+    width: 95vw;
   }
 }
 
@@ -276,7 +282,6 @@ button{
   margin-left: 10px;
   max-width: 450px;
 }
-
 
 .portcards:hover {
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
