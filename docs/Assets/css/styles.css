@@ -11,6 +11,7 @@ body {
 h1{
   font-family: 'Syne', sans-serif;
   margin: 30px;
+  line-height: 30px;
 }
 
 h2{
@@ -292,7 +293,8 @@ button{
 }
 
 .carousel {
-  width: 100%;
+  width: 1500px;
+  height: auto;
   overflow: hidden; /* Hide anything that exceeds the container */
   position: relative;
   
@@ -300,12 +302,12 @@ button{
 
 .carousel-images {
   display: flex;
-  width: 200%; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
-  animation: slide 24s linear infinite; /* Animation of sliding images */
+  width: 3000px; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
+  animation: slide 12s linear infinite; /* Animation of sliding images */
 }
 
 .carousel-images img {
-  width: 30%; /* Make each image take up the full width of the carousel */
+  width: 300px; /* Make each image take up the full width of the carousel */
   height: auto;
 }
 
@@ -315,10 +317,10 @@ button{
       transform: translateX(0); /* Start at the first image */
   }
   50% {
-      transform: translateX(-100%); /* Move halfway (to the 6th image, i.e., the first duplicate) */
+      transform: translateX(-750px); /* Move halfway (to the 6th image, i.e., the first duplicate) */
   }
   100% {
-      transform: translateX(-200%); /* Move to the end of the first set (to the 10th image, i.e., the last duplicate) */
+      transform: translateX(-1500px); /* Move to the end of the first set (to the 10th image, i.e., the last duplicate) */
   }
 }
 
