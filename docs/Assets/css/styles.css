@@ -306,7 +306,7 @@ button{
 }
 
 .carousel {
-  width: 1920px;
+  width: auto;
   height: auto;
   overflow: hidden; /* Hide anything that exceeds the container */
   position: relative;
