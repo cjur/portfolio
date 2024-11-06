@@ -273,8 +273,13 @@ button{
 }
 
 .landing{
-  text-align: center;
+  text-align: left;
   margin: 20px;
+}
+
+.landing p{
+  margin-left: 30px;
+  margin-bottom: 20px;
 }
 
 .programknowledge{
