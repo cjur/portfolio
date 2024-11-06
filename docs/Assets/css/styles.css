@@ -332,3 +332,8 @@ button{
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.6) -10%, rgba(255, 255, 255, 0) 40%), linear-gradient(180deg, rgba(255, 255, 255, .6) -10%, rgba(255, 255, 255, 0) 40%);
   pointer-events: none;
 }
+
+.aboutpage p{
+  margin-left: 30px;
+  
+}
