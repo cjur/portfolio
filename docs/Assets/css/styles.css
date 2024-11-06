@@ -210,14 +210,14 @@ button{
 }
 
 .portcards {
-  display: flexbox;
+  display:block;
   justify-content:left;
   line-height: 22px;
   padding:20px;
   border: 1px solid #242424;
   position: relative;
   align-items: left;
-  margin: 20px;
+  margin: 0px;
   border-radius: 10px;
   perspective: 1000px;
   transition: transform 1s ease;
@@ -229,6 +229,7 @@ button{
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin: 20px;
 }
 
 @media (min-width: 768px) {
@@ -240,6 +241,18 @@ button{
 
   .portcards {
     flex: 1 1 calc(50% - 20px);  /* 50% width minus the gap */
+  }
+}
+
+@media (min-width: 1000px){
+  .portcards{
+    width: 40vw;
+  }
+}
+
+@media (min-width: 1600px){
+  .portcards{
+    width: 45.8vw;
   }
 }
 
