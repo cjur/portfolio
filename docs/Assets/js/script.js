@@ -1,21 +1,73 @@
 
+
+
 var timeout;
 window.onload = function(){
   timeout = setTimeout(function(){
     document.querySelector('body').classList.remove('pointernone');
   }, 1100);
 }
-  function toggleMenu() {
-    var menu = document.getElementById("dropdownMenu");
-    var menuIcon = document.querySelector(".menu-icon");
-    if (menu.style.display === "block") {
-      menu.style.display = "none";
-      menuIcon.textContent = "☰";
-    } else {
-      menu.style.display = "block";
-      menuIcon.textContent = "✕";
-    }
+
+// script.js
+let menuOpen = false;
+const menu = document.getElementById("dropdownMenu");
+const menuImage = document.getElementById("menu-image");
+
+const images = [
+  "Assets/images/menuanimation/f1.png",
+  "Assets/images/menuanimation/f2.png",
+  "Assets/images/menuanimation/f3.png",
+  "Assets/images/menuanimation/f4.png",
+  "Assets/images/menuanimation/f5.png",
+  "Assets/images/menuanimation/f6.png",
+  "Assets/images/menuanimation/f7.png",
+  "Assets/images/menuanimation/f8.png"
+];
+
+function toggleMenu() {
+  // Toggle the menu visibility
+  menu.classList.toggle("show");
+
+  // Trigger the animation on the icon (depending on whether the menu is open or closed)
+  playIconAnimation();
+}
+
+function playIconAnimation() {
+  // If the menu is open, play forward; if closed, play backward
+  if (menu.classList.contains("show")) {
+    // Menu is opening -> play forward animation
+    animateImagesForward();
+  } else {
+    // Menu is closing -> play backward animation
+    animateImagesBackward();
   }
+}
+
+function animateImagesForward() {
+  let currentIndex = 0; // Start with f1.png
+  const interval = setInterval(() => {
+    menuImage.src = images[currentIndex];
+    currentIndex++;
+
+    if (currentIndex >= images.length) {
+      clearInterval(interval); // Stop the animation after the last image
+    }
+  }, 130); // Change image every 250ms (adjust timing as needed)
+}
+
+function animateImagesBackward() {
+  let currentIndex = images.length - 1; // Start with f8.png
+  const interval = setInterval(() => {
+    menuImage.src = images[currentIndex];
+    currentIndex--;
+
+    if (currentIndex < 0) {
+      clearInterval(interval); // Stop the animation after the first image
+    }
+  }, 130); // Change image every 250ms (adjust timing as needed)
+}
+
+
 
 const elements = document.querySelectorAll('.fade-in');
 
