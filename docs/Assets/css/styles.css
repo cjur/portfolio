@@ -293,7 +293,7 @@ button{
 }
 
 .carousel {
-  width: 1500px;
+  width: 1920px;
   height: auto;
   overflow: hidden; /* Hide anything that exceeds the container */
   position: relative;
@@ -302,12 +302,12 @@ button{
 
 .carousel-images {
   display: flex;
-  width: 3000px; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
+  width: 3840px; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
   animation: slide 12s linear infinite; /* Animation of sliding images */
 }
 
 .carousel-images img {
-  width: 300px; /* Make each image take up the full width of the carousel */
+  width: 384px; /* Make each image take up the full width of the carousel */
   height: auto;
 }
 
