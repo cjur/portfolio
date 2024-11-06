@@ -77,7 +77,7 @@ footer {
   display: none;
   position: absolute;
   right: 0;
-  top: 60px;
+  top: 65px;
   z-index: 1;
 }
 
@@ -85,17 +85,17 @@ footer {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-top: 10px;
-  margin-right: 35px;
+  margin-top: 60px;
+  margin-right: 0px;
 }
 
 .dropdown-menu ul li {
-  padding: 6px 10px;
+  padding: 12px 40px;
   border: 1px solid #1a1a1a;
   background-color: #ffffffdf;
   border-radius: 10px;
   margin-bottom: 4px;
-  font-size: 12px;
+  font-size: 16px;
   text-align: center;
 }
 
@@ -125,49 +125,6 @@ a {
 a:hover{
   font-weight: 600;
   color: rgb(61, 118, 199);
-}
-
-.video-wrapper {
-  position: relative;
-  padding-top: 56.25%;
-}
-
-.video-wrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #1a1a1a; /* Text color */
-}
-
-.video-overlay p {
-  margin: 0;
-  padding: 10px; /* To ensure text doesn't touch the edges */
-  text-align: center;
-}
-
-.text-content {
-  text-align: center;
-  color: #1a1a1a; /* Adjust text color as needed */
-}
-
-.text-content p {
-  margin: 0;
-  max-width: 350px;
 }
 
 ol{
@@ -294,4 +251,52 @@ button{
 .programknowledge{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden; /* Hide anything that exceeds the container */
+  position: relative;
+}
+
+.carousel {
+  width: 100%;
+  overflow: hidden; /* Hide anything that exceeds the container */
+  position: relative;
+  
+}
+
+.carousel-images {
+  display: flex;
+  width: 200%; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
+  animation: slide 24s linear infinite; /* Animation of sliding images */
+}
+
+.carousel-images img {
+  width: 30%; /* Make each image take up the full width of the carousel */
+  height: auto;
+}
+
+/* Define the keyframe animation for continuous scrolling */
+@keyframes slide {
+  0% {
+      transform: translateX(0); /* Start at the first image */
+  }
+  50% {
+      transform: translateX(-100%); /* Move halfway (to the 6th image, i.e., the first duplicate) */
+  }
+  100% {
+      transform: translateX(-200%); /* Move to the end of the first set (to the 10th image, i.e., the last duplicate) */
+  }
+}
+
+.carousel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.6) -10%, rgba(255, 255, 255, 0) 40%), linear-gradient(180deg, rgba(255, 255, 255, .6) -10%, rgba(255, 255, 255, 0) 40%);
+  pointer-events: none;
 }
