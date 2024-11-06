@@ -282,7 +282,7 @@ button{
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
   box-shadow: -5px 5px 20px#aebddd73;
-  transition: transform 2s ease;
+  transition: 2s ease;
 }
 
 .portcardimg {
