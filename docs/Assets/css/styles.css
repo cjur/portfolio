@@ -35,7 +35,7 @@ header {
   border-radius: 10px;
   perspective: 1000px;
   transition: transform 1s ease;
-  z-index: 1;
+  z-index: 101;
 }
 
 footer {
@@ -79,7 +79,7 @@ footer {
   position: absolute;
   right: 0;
   top: 65px;
-  z-index: 2;
+  z-index: 99999;
 }
 
 .dropdown-menu ul {
@@ -88,6 +88,7 @@ footer {
   padding: 0;
   margin-top: 60px;
   margin-right: 0px;
+  z-index: 99999;
 }
 
 .dropdown-menu ul li {
@@ -98,7 +99,7 @@ footer {
   margin-bottom: 4px;
   font-size: 16px;
   text-align: center;
-  z-index: 2;
+  z-index: 99999;
 }
 
 .dropdown-menu ul li:hover{
@@ -205,7 +206,7 @@ button{
   mix-blend-mode: lighten;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 999;
   opacity: 0; /* Initially hidden */
   filter: blur(14px);
 }
@@ -301,23 +302,17 @@ button{
 }
 
 .carousel {
-  width: 100%;
-  overflow: hidden; /* Hide anything that exceeds the container */
-  position: relative;
-}
-
-.carousel {
   width: auto;
   height: auto;
   overflow: hidden; /* Hide anything that exceeds the container */
   position: relative;
-  
+  z-index: 99;
 }
 
 .carousel-images {
   display: flex;
   width: 3840px; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
-  animation: slide 12s linear infinite; /* Animation of sliding images */
+  animation: slide 24s linear infinite; /* Animation of sliding images */
 }
 
 .carousel-images img {
@@ -355,4 +350,8 @@ button{
 
 .contactbut {
   margin-bottom: 20px;
+}
+
+.pointernone{
+  pointer-events: none;
 }

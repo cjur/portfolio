@@ -1,14 +1,10 @@
 
-document.querySelectorAll('.grid-item').forEach(item => {
-    item.addEventListener('click', function() {
-      if (window.innerWidth > 768) {
-        this.classList.toggle('expanded');
-      }
-    });
-  });
-  
-  
-
+var timeout;
+window.onload = function(){
+  timeout = setTimeout(function(){
+    document.querySelector('body').classList.remove('pointernone');
+  }, 1100);
+}
   function toggleMenu() {
     var menu = document.getElementById("dropdownMenu");
     var menuIcon = document.querySelector(".menu-icon");
@@ -120,3 +116,4 @@ document.addEventListener('DOMContentLoaded', () => {
     portcard.addEventListener('mouseleave', () => resetTransform(portcard));
   });
 });
+
