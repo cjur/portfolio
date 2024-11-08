@@ -114,6 +114,7 @@ footer:hover {
   font-size: 14px;
   text-align: center;
   z-index: 99999;
+  transition: ease-in-out 1s;
 }
 
 .dropdown-menu ul li:hover{
@@ -185,6 +186,7 @@ button{
   box-shadow: inset 1px 1px 1px #ffffffb7;
   border: solid #ffffff 1px;
   box-shadow: 0px 0px 10px #ffffff00;
+  transition:all 1s ease;
 }
 
 button:hover{
@@ -192,9 +194,9 @@ button:hover{
   color:#1a1a1a;
   border: solid #1a1a1a 1px;
   box-shadow: inset 0px 0px 5px #ffffffb7;
-  box-shadow: 0px 0px 20px #73a8e977;
+  box-shadow: 0px 0px 20px #ffffff5b;
   border-radius: 15px;
-  transition:all 1s ease-in-out;
+  transition:all 1s ease;
 }
 
 .skill {
@@ -248,7 +250,7 @@ button:hover{
   margin: 0px;
   border-radius: 10px;
   perspective: 1000px;
-  transition: transform 1s ease;
+  transition: all 2s ease;
   z-index: 0;
   flex: 1;
 }
@@ -299,7 +301,7 @@ button:hover{
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
   box-shadow: -5px 5px 20px#aebddd73;
-  transition: 2s ease;
+  transition: all 2s ease;
 }
 
 .portcardimg {
