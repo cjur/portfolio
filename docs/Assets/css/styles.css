@@ -413,7 +413,6 @@ button:hover{
   transition: opacity 0.3s ease;
 }
 
-/* Dropdown menu styles */
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -423,5 +422,6 @@ button:hover{
   display: block;
 }
 
-/* No need for @keyframes to animate images, JavaScript will change src directly */
-
+.aboutpagefp {
+  padding-left: 20px;
+}
