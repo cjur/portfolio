@@ -120,6 +120,8 @@ footer:hover {
 .dropdown-menu ul li:hover{
   background-color: #1a1a1a;
   color:#fff;
+  border-radius: 15px;
+  border: 1px solid #ffffff;
   transition: ease-in-out 1s;
 }
 
