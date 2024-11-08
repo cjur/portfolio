@@ -34,7 +34,7 @@ header {
   margin-bottom: 20px;
   border-radius: 10px;
   perspective: 1000px;
-  transition: transform 2s ease;
+  transition: all 2s ease;
   z-index: 101;
 }
 
@@ -43,7 +43,7 @@ header:hover {
   box-shadow:  inset 0px 0px 20px #ffffff;
   box-shadow: -5px 5px 20px#aebddd73;
   border-radius: 20px;
-  transition: 2s ease;
+  transition: all 2s ease;
 }
 
 footer {
@@ -58,7 +58,7 @@ footer {
   margin: 20px;
   margin-top: 40px;
   perspective: 1000px;
-  transition: transform 2s ease;
+  transition: all 2s ease;
   z-index: 1;
 }
 
@@ -67,7 +67,7 @@ footer:hover {
   box-shadow:  inset 0px 0px 20px #ffffff;
   box-shadow: -5px 5px 20px#aebddd73;
   border-radius: 20px;
-  transition: 2s ease;
+  transition: all 2s ease;
 }
 
 .logo-and-name {
