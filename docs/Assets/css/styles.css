@@ -97,21 +97,21 @@ footer:hover {
 }
 
 .dropdown-menu ul {
-  list-style-type: none;
+  list-style-type:none;
   margin: 0;
   padding: 0;
-  margin-top: 60px;
+  margin-top: 25px;
   margin-right: 0px;
   z-index: 99999;
 }
 
 .dropdown-menu ul li {
-  padding: 12px 40px;
+  padding: 11px 25px;
   border: 1px solid #1a1a1a;
   background-color: #ffffffdf;
-  border-radius: 10px;
+  border-radius: 25px;
   margin-bottom: 4px;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   z-index: 99999;
 }
@@ -170,19 +170,31 @@ p {
 
 button{
   font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
   margin-left: 30px;
   background: linear-gradient( 140deg, rgb(66, 66, 66) 0%,#141414 50%);
-  border: none;
   color:#fff;
-  padding: 8px 24px;
+  padding: 14px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
-  border-radius: 50px;
+  font-size: 14px;
+  border-radius: 25px;
   box-shadow: inset -2px -4px 8px #000000;
   box-shadow: inset -2px -2px 1px #000000;
   box-shadow: inset 1px 1px 1px #ffffffb7;
+  border: solid #ffffff 1px;
+  box-shadow: 0px 0px 10px #ffffff00;
+}
+
+button:hover{
+  background: linear-gradient( 140deg, rgb(255, 255, 255) 0%,#e0ebf0 50%);
+  color:#1a1a1a;
+  border: solid #1a1a1a 1px;
+  box-shadow: inset 0px 0px 5px #ffffffb7;
+  box-shadow: 0px 0px 20px #73a8e977;
+  border-radius: 15px;
+  transition:all 1s ease-in-out;
 }
 
 .skill {
