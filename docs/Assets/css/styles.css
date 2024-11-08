@@ -332,7 +332,7 @@ button{
 
 .carousel-images {
   display: flex;
-  width: 3840px; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
+  width: 3840PX; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
   animation: slide 24s linear infinite; /* Animation of sliding images */
 }
 
@@ -346,11 +346,8 @@ button{
   0% {
       transform: translateX(0); /* Start at the first image */
   }
-  50% {
-      transform: translateX(-750px); /* Move halfway (to the 6th image, i.e., the first duplicate) */
-  }
   100% {
-      transform: translateX(-1500px); /* Move to the end of the first set (to the 10th image, i.e., the last duplicate) */
+      transform: translateX(-1920px); /* Move to the end of the first set (to the 10th image, i.e., the last duplicate) */
   }
 }
 
