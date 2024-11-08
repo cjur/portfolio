@@ -371,7 +371,11 @@ button{
 }
 
 .aboutpage p{
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.skill-text{
+  padding-left: 20px;
 }
 
 .contactbut {
