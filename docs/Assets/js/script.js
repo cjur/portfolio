@@ -5,7 +5,7 @@ var timeout;
 window.onload = function(){
   timeout = setTimeout(function(){
     document.querySelector('body').classList.remove('pointernone');
-  }, 1100);
+  }, 1400);
 }
 
 // script.js
