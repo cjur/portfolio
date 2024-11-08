@@ -42,6 +42,7 @@ header:hover {
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
   box-shadow: -5px 5px 20px#aebddd73;
+  border-radius: 20px;
   transition: 2s ease;
 }
 
@@ -65,6 +66,7 @@ footer:hover {
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
   box-shadow: -5px 5px 20px#aebddd73;
+  border-radius: 20px;
   transition: 2s ease;
 }
 
@@ -303,6 +305,7 @@ button:hover{
   background: linear-gradient(0deg,#dde6ffb6, #ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
   box-shadow: -5px 5px 20px#aebddd73;
+  border-radius: 20px;
   transition: all 2s ease;
 }
 
