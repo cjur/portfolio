@@ -434,3 +434,22 @@ button:hover{
 .aboutpagefp {
   padding-left: 20px;
 }
+
+.mbbfront {
+  display: block;
+  align-items: left;
+}
+
+.mbbfrontvideos {
+  width: 300px;
+  padding: 10px;
+}
+
+.highlighttag {
+  font-family: 'Syne', sans-serif;
+  font-weight: bold;
+  margin-bottom: -22px;
+  margin-left: 5px;
+  color:#4283d1;
+  
+}
