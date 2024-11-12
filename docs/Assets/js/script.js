@@ -145,12 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const { offsetX, offsetY, target } = event;
     const { offsetWidth, offsetHeight } = target;
     const halfWidth = offsetWidth/2;
-    const halfHeight = offsetHeight/2.4;
+    const halfHeight = offsetHeight/2;
     
-    const rotateX = ((offsetY - halfHeight) / halfHeight) * -6; // 10 degrees max rotation
-    const rotateY = ((offsetX - halfWidth) / halfWidth) * 8; // 10 degrees max rotation
+    const rotateX = ((offsetY - halfHeight) / halfHeight) * -3; // 10 degrees max rotation
+    const rotateY = ((offsetX - halfWidth) / halfWidth) * 6; // 10 degrees max rotation
 
-    element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.005)`;
+    element.style.transform = `rotateX(${rotateX+5}deg) rotateY(${rotateY-5}deg) scale(1.006)`;
   };
 
   const resetTransform = (element) => {
