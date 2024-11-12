@@ -34,16 +34,17 @@ header {
   margin-bottom: 20px;
   border-radius: 10px;
   perspective: 1000px;
-  transition: all 2s ease;
+  transition: all 2s ease-in-out;
   z-index: 101;
+  box-shadow: 0px 2px 0px #000000;
 }
 
 header:hover {
-  background: linear-gradient(0deg,#dde6ffb6, #ffffff);
+  background: linear-gradient(0deg, #dde6ff57,#ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
-  box-shadow: -5px 5px 20px#aebddd73;
+  box-shadow: 0px 5px 0px #000000;
   border-radius: 20px;
-  transition: all 2s ease;
+  transition: all 2s ease-in-out;
 }
 
 footer {
@@ -58,16 +59,17 @@ footer {
   margin: 20px;
   margin-top: 40px;
   perspective: 1000px;
-  transition: all 2s ease;
+  transition: all 2s ease-in-out;
   z-index: 1;
+  box-shadow: 0px 2px 0px #000000;
 }
 
 footer:hover {
-  background: linear-gradient(0deg,#dde6ffb6, #ffffff);
+  background: linear-gradient(0deg, #dde6ff57,#ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
-  box-shadow: -5px 5px 20px#aebddd73;
+  box-shadow: 0px 5px 0px #000000;
   border-radius: 20px;
-  transition: all 2s ease;
+  transition: all 2s ease-in-out;
 }
 
 .logo-and-name {
@@ -253,9 +255,10 @@ button:hover{
   margin: 0px;
   border-radius: 10px;
   perspective: 1000px;
-  transition: all 2s ease;
+  transition: all 2s ease-in-out;
   z-index: 0;
   flex: 1;
+  box-shadow: 0px 2px 0px #000000;
 }
 
 .container {
@@ -301,11 +304,11 @@ button:hover{
 }
 
 .portcards:hover {
-  background: linear-gradient(0deg,#dde6ffb6, #ffffff);
+  background: linear-gradient(0deg, #dde6ff57,#ffffff);
   box-shadow:  inset 0px 0px 20px #ffffff;
-  box-shadow: -5px 5px 20px#aebddd73;
+  box-shadow: 0px 5px 0px #000000;
   border-radius: 20px;
-  transition: all 2s ease;
+  transition: all 2s ease-in-out;
 }
 
 .portcardimg {

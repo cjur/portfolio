@@ -95,10 +95,10 @@ elements.forEach(element =>{
 function animateSkills() {
   const skills = document.querySelectorAll('.skill-bar');
   const widths = {
-      'novice': '20%',
-      'adv-beginner': '40%',
-      'competent': '60%',
-      'proficient': '80%',
+      'novice': '50%',
+      'adv-beginner': '60%',
+      'competent': '70%',
+      'proficient': '90%',
       'expert': '100%'
   };
 
@@ -144,11 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const handleMouseMove = (element, event) => {
     const { offsetX, offsetY, target } = event;
     const { offsetWidth, offsetHeight } = target;
-    const halfWidth = offsetWidth / 2;
-    const halfHeight = offsetHeight / 2;
+    const halfWidth = offsetWidth/2;
+    const halfHeight = offsetHeight/2.4;
     
-    const rotateX = ((offsetY - halfHeight) / halfHeight) * -8; // 10 degrees max rotation
-    const rotateY = ((offsetX - halfWidth) / halfWidth) * 12; // 10 degrees max rotation
+    const rotateX = ((offsetY - halfHeight) / halfHeight) * -6; // 10 degrees max rotation
+    const rotateY = ((offsetX - halfWidth) / halfWidth) * 8; // 10 degrees max rotation
 
     element.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
