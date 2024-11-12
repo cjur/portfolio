@@ -311,6 +311,12 @@ button:hover{
   transition: all 2s ease-in-out;
 }
 
+.portcards:hover .h3proknow{
+  color: #2569bd;
+  transition: all 2s ease-in-out;
+  text-shadow: 
+  0px 3px 10px rgba(102, 168, 255, 0.57);
+}
 .portcardimg {
   margin: 10px;
   border-radius: 6px;
@@ -453,6 +459,11 @@ button:hover{
   font-weight: bold;
   margin-bottom: -22px;
   margin-left: 5px;
-  color:#4283d1;
-  
+  color:#4283d1; 
+}
+
+.h3proknow {
+  padding-left: 20px;
+  margin-bottom: -10px;
+  transition: all 1s ease-in-out;
 }
