@@ -31,7 +31,7 @@ header {
   position: relative;
   align-items: center;
   margin: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border-radius: 10px;
   perspective: 1000px;
   transition: all 2s ease-in-out;
