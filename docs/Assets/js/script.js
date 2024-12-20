@@ -24,6 +24,17 @@ const images = [
   "Assets/images/menuanimation/f8.png"
 ];
 
+// Preload images
+const preloadedImages = [];
+function preloadImages(imageArray) {
+  imageArray.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+    preloadedImages.push(img);
+  });
+}
+preloadImages(images);
+
 function toggleMenu() {
   // Toggle the menu visibility
   menu.classList.toggle("show");
@@ -52,7 +63,7 @@ function animateImagesForward() {
     if (currentIndex >= images.length) {
       clearInterval(interval); // Stop the animation after the last image
     }
-  }, 130); // Change image every 250ms (adjust timing as needed)
+  }, 100); // Change image every 130ms (adjust timing as needed)
 }
 
 function animateImagesBackward() {
@@ -64,7 +75,7 @@ function animateImagesBackward() {
     if (currentIndex < 0) {
       clearInterval(interval); // Stop the animation after the first image
     }
-  }, 130); // Change image every 250ms (adjust timing as needed)
+  }, 100); // Change image every 130ms (adjust timing as needed)
 }
 
 
