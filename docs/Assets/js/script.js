@@ -2,11 +2,14 @@
 
 
 var timeout;
-window.onload = function(){
-  timeout = setTimeout(function(){
+window.onload = function () {
+  timeout = setTimeout(function () {
+    // Remove the pointer restriction and hide the loading screen
     document.querySelector('body').classList.remove('pointernone');
-  }, 1400);
-}
+    document.getElementById('loading-screen').style.display = 'none';
+  }, 2000); // Adjust timeout as needed
+};
+
 
 // script.js
 let menuOpen = false;
