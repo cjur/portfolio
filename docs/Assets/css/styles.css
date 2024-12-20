@@ -258,13 +258,12 @@ button:hover{
 }
 
 .portcards {
-  display:block;
-  justify-content:left;
+  display:flexbox;
+  justify-content:center;
   line-height: 22px;
   padding:20px;
   border: 1px solid #242424;
   position: relative;
-  align-items: left;
   margin: 0px;
   border-radius: 10px;
   perspective: 1000px;
@@ -333,6 +332,7 @@ button:hover{
 .portcardimg {
   margin: 10px;
   border-radius: 6px;
+  height: 200px;
 }
 
 .portlink {
