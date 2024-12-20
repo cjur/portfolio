@@ -412,11 +412,6 @@ button:hover{
 
 .profile{
   margin-left: 20px;
-  transition: all 1s ease-in-out;
-}
-.profile:hover{
-  transform: scale(1.07);
-  transition: all 1s ease-in-out;
 }
 
 /* styles.css */
