@@ -198,37 +198,48 @@ button{
   align-items: center;
   text-decoration: none;
   display: flex;
-  font-size: 14px;
+  font-size: 0px;
   border-radius: 25px;
   box-shadow: inset -2px -4px 8px #000000;
   box-shadow: inset -2px -2px 1px #000000;
   box-shadow: inset 1px 1px 1px #ffffffb7;
   border: solid #ffffff 1px;
   box-shadow: 0px 0px 10px #ffffff00;
-  transition:all 1s ease;
+  transition:all 0.6s ease-in-out;
+}
+
+@media (max-width: 1000px) {
+  button{
+    font-size: 14px;
+  }
+  .button-icon{
+    padding-right: 16px;
+  }
 }
 
 button:hover{
   background: linear-gradient( 140deg, rgb(255, 255, 255) 0%,#e0ebf0 50%);
   color:#1a1a1a;
+  font-size: 14px;
   border: solid #1a1a1a 1px;
   box-shadow: inset 0px 0px 5px #ffffffb7;
   box-shadow: 0px 0px 20px #ffffff5b;
   border-radius: 15px;
-  transition:all 1s ease-in-out;
+  transition:all 0.6s ease-in-out;
 }
 
 .button-icon{
   height: 30px;
   display: flex;
-  padding-right: 16px;
   filter: invert(1);
-  transition:all 1s ease-in-out;
+  transition:all 0.3s ease-in-out;
 }
 
 button:hover .button-icon {
   filter: invert(0);
-  transition:all 1s ease-in-out;
+  padding-right: 16px;
+  opacity: 85%;
+  transition:all 0.3s ease-in-out;
 }
 
 .button-container{
