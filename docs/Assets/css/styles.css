@@ -131,14 +131,27 @@ footer:hover {
 .dropdown-menu ul a li {
   text-decoration: none;
   color: #1a1a1a;
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-menu ul li :hover{
   text-decoration: none;
-  color: #ffffff;
-  display: block;
+  display: flex;
 }
+
+.dropdown-icon {
+  height: 22px;
+  display: flex;
+  padding-right: 12px;
+  transition: all ease-in-out 1s;
+}
+
+.dropdown-menu ul li:hover .dropdown-icon {
+  filter: invert(1);
+  transition: all ease-in-out 1s;
+}
+
 a {
   color: rgb(92, 160, 255);
   font-weight: 600;
