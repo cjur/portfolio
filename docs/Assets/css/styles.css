@@ -231,7 +231,7 @@ button:hover{
 }
 
 .button-icon{
-  height: 30px;
+  height: 26px;
   display: flex;
   filter: invert(1);
   transition:all 0.3s ease-in-out;
