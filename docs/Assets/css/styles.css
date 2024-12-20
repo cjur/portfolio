@@ -219,9 +219,9 @@ button:hover{
 }
 
 .button-icon{
-  height: 22px;
+  height: 30px;
   display: flex;
-  padding-right: 12px;
+  padding-right: 16px;
   filter: invert(1);
   transition:all 1s ease-in-out;
 }
