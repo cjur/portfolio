@@ -190,13 +190,14 @@ p {
 button{
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  margin:10px;
+  margin:5px;
   background: linear-gradient( 140deg, rgb(66, 66, 66) 0%,#141414 50%);
   color:#fff;
-  padding: 14px 30px;
+  padding: 12px 24px;
   text-align: center;
+  align-items: center;
   text-decoration: none;
-  display: inline-block;
+  display: flex;
   font-size: 14px;
   border-radius: 25px;
   box-shadow: inset -2px -4px 8px #000000;
@@ -215,6 +216,25 @@ button:hover{
   box-shadow: 0px 0px 20px #ffffff5b;
   border-radius: 15px;
   transition:all 1s ease-in-out;
+}
+
+.button-icon{
+  height: 22px;
+  display: flex;
+  padding-right: 12px;
+  filter: invert(1);
+  transition:all 1s ease-in-out;
+}
+
+button:hover .button-icon {
+  filter: invert(0);
+  transition:all 1s ease-in-out;
+}
+
+.button-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .skill {
