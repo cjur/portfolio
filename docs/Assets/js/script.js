@@ -7,7 +7,7 @@ window.onload = function () {
     // Remove the pointer restriction and hide the loading screen
     document.querySelector('body').classList.remove('pointernone');
     document.getElementById('loading-screen').style.display = 'none';
-  }, 2000); // Adjust timeout as needed
+  }, 1700); // Adjust timeout as needed
 };
 
 
