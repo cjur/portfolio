@@ -72,10 +72,27 @@ footer:hover {
   transition: all 2s ease-in-out;
 }
 
+header:hover .logo-and-name {
+  text-shadow: 
+  -1px 1px 5px #ffffff,-1px 1px 10px #ffffff,
+  -1px 1px 1px #14141465, 
+  -2px 2px 2px #14141465, 
+  -4px 4px 4px #14141465, 
+  -8px 8px 8px #14141465, 
+  -16px 16px 16px #14141465, 
+  -32px 32px 32px #14141465, 
+  -64px 64px 64px #14141465, 
+  -128px 128px 128px #14141465, 
+  -256px 256px 256px #14141465, 
+  -512px 512px 512px #14141465;
+  transition: all 2s ease-in-out;
+}
+
 .logo-and-name {
   display: flex;
   align-items: center;
   margin-left: 1%;
+  transition: all 2s ease-in-out;
 }
 
 .logo-and-name img {
