@@ -112,7 +112,7 @@ footer:hover {
   padding: 11px 25px;
   border: 1px solid #1a1a1a;
   background-color: #ffffffdf;
-  border-radius: 25px;
+  border-radius: 15px;
   margin-bottom: 4px;
   font-size: 14px;
   text-align: center;
@@ -123,7 +123,7 @@ footer:hover {
 .dropdown-menu ul li:hover{
   background-color: #1a1a1a;
   color:#fff;
-  border-radius: 15px;
+  border-radius: 10px;
   border: 1px solid #ffffff;
   transition: all ease-in-out 1s;
 }
@@ -199,7 +199,7 @@ button{
   text-decoration: none;
   display: flex;
   font-size: 0px;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: inset -2px -4px 8px #000000;
   box-shadow: inset -2px -2px 1px #000000;
   box-shadow: inset 1px 1px 1px #ffffffb7;
@@ -226,7 +226,7 @@ button:hover{
   border: solid #1a1a1a 1px;
   box-shadow: inset 0px 0px 5px #ffffffb7;
   box-shadow: 0px 0px 20px #ffffff5b;
-  border-radius: 15px;
+  border-radius: 10px;
   transition: all 0.6s ease-in-out;
 }
 
@@ -332,10 +332,10 @@ button:hover .button-icon {
 
 @media (min-width: 1000px){
   .portcards{
-    width: 40vw;
+    flex: 1 1 calc(50% - 20px);
   }
   .experience .portcards{
-    width: 95vw;
+    flex: 1 1 calc(50% - 20px);
   }
 }
 
