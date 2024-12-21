@@ -91,7 +91,6 @@ header:hover .logo-and-name {
 .logo-and-name {
   display: flex;
   align-items: center;
-  margin-left: 1%;
   transition: all 2s ease-in-out;
 }
 
