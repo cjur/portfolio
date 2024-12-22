@@ -74,10 +74,10 @@ footer:hover {
 
 header:hover .logo-and-name {
   text-shadow: 
-  -1px 1px 5px #ffffff,-1px 1px 10px #ffffff,
-  -1px 1px 1px #1e2c3a48, 
-  -2px 2px 2px #1e2c3a48, 
-  -4px 4px 4px #1e2c3a48, 
+  -1px 1px 3px #ffffff,-1px 1px 20px #ffffff,
+  -1px 1px 1px #1e2c3a5e,
+  -2px 2px 2px #1e2c3a56, 
+  -4px 4px 4px #1e2c3a3f, 
   -8px 8px 8px #1e2c3a48, 
   -16px 16px 14px #1e2c3a48, 
   -32px 32px 25px #1e2c3a48, 
@@ -134,7 +134,7 @@ header:hover .logo-and-name {
   font-size: 14px;
   text-align: center;
   z-index: 99999;
-  transition: all ease-in-out 1s;
+  transition: all ease-in-out 0.6s;
 }
 
 .dropdown-menu ul li:hover{
@@ -142,7 +142,7 @@ header:hover .logo-and-name {
   color:#fff;
   border-radius: 10px;
   border: 1px solid #ffffff;
-  transition: all ease-in-out 1s;
+  transition: all ease-in-out 0.6s;
 }
 
 .dropdown-menu ul a li {
@@ -161,12 +161,12 @@ header:hover .logo-and-name {
   height: 22px;
   display: flex;
   padding-right: 12px;
-  transition: all ease-in-out 1s;
+  transition: all ease-in-out 0.6s;
 }
 
 .dropdown-menu ul li:hover .dropdown-icon {
   filter: invert(1);
-  transition: all ease-in-out 1s;
+  transition: all ease-in-out 0.6s;
 }
 
 a {
