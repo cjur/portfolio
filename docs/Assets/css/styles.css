@@ -555,3 +555,7 @@ button:hover .button-icon {
   height: auto;
 }
 
+.imgcenter {
+  display: block;
+  margin: 0 auto;
+}
