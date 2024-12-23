@@ -559,3 +559,22 @@ button:hover .button-icon {
   display: block;
   margin: 0 auto;
 }
+
+.containerport {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+}
+
+@media (min-width: 1000px) {
+  .containerport {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .portcards {
+    flex: 1 1 calc(50% - 20px);  /* 50% width minus the gap */
+  }
+}
