@@ -392,25 +392,25 @@ button:hover .button-icon {
   }
 
   .portcards {
-    flex: 1 1 calc(50% - 20px);  /* 50% width minus the gap */
+    flex: 1 1 calc(50% - 40px);  /* 50% width minus the gap */
   }
 }
 
 @media (min-width: 1000px){
   .portcards{
-    flex: 1 1 calc(50% - 20px);
+    flex: 1 1 calc(50% - 40px);
   }
   .experience .portcards{
-    flex: 1 1 calc(50% - 20px);
+    flex: 1 1 calc(50% - 40px);
   }
 }
 
 @media (min-width: 1920px){
   .portcards{
-    width: 45.8vw;
+    flex: 1 1 calc(50% - 40px);
   }
   .experience .portcards{
-    width: 95vw;
+    flex: 1 1 calc(50% - 40px);
   }
 }
 
