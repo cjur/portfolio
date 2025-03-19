@@ -4,18 +4,21 @@ body {
   font-family: 'DM Sans', sans-serif;
   background-color: rgb(251, 252, 255);
   color: #1a1a1a;
+  line-height: auto;
 }
 
 h1{
   font-family: 'Syne', sans-serif;
+  line-height: auto;
 }
 
 h2{
   font-family: 'Syne',sans-serif;
+  line-height: auto;
 }
 
 h3{
-
+  line-height: auto;
 }
 
 header {
