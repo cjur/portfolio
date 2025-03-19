@@ -554,8 +554,8 @@ button:hover .button-icon {
 
 .containerport {
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  flex-direction: column;
   margin: 20px;
 }
 
@@ -565,9 +565,8 @@ button:hover .button-icon {
     flex-wrap: wrap;
     gap: 20px;
   }
-
-  .portcards {
-    flex: 1 1 calc(50% - 20px);  /* 50% width minus the gap */
+  .containerport .portcards{
+    width: calc(50vw - 90px)
   }
 }
 
