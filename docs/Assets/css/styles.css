@@ -4,23 +4,18 @@ body {
   font-family: 'DM Sans', sans-serif;
   background-color: rgb(251, 252, 255);
   color: #1a1a1a;
-  margin: 0;
-  padding: 0;
 }
 
 h1{
   font-family: 'Syne', sans-serif;
-  margin-left: 15px;
-  line-height: 30px;
 }
 
 h2{
   font-family: 'Syne',sans-serif;
-  margin-left: 15px;
 }
 
 h3{
-  margin-left: 15px;
+
 }
 
 header {
@@ -57,7 +52,6 @@ footer {
   border-radius: 10px;
   align-items: center;
   margin: 20px;
-  margin-top: 40px;
   perspective: 1000px;
   transition: all 2s ease-in-out;
   z-index: 1;
@@ -122,15 +116,6 @@ header:hover .logo-and-name {
   -256px 256px 160px #1e2c3a00, 
   -512px 512px 400px #1e2c3a00;
   transition: all 2s ease-in-out;
-}
-
-.logo-and-name img {
-  height: 40px;
-}
-
-.logo-and-name span {
-  font-family: 'Syne', sans-serif;
-  margin-left: 30px;
 }
 
 .menu-icon{
@@ -215,6 +200,10 @@ a:hover{
   color: rgb(61, 118, 199);
 }
 
+.logo{
+  margin-left: 20px;
+}
+
 ol{
   padding-left: 20pxpx;
   padding-bottom: 5px;
@@ -234,15 +223,12 @@ ol{
 }
 
 p {
-  margin-left: 30px;
-  margin-right: 30px;
   font-weight: 200;
 }
 
 button{
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  margin: 3px;
   background: linear-gradient( 140deg, rgb(66, 66, 66) 0%,#141414 50%);
   color:#fff;
   padding: 12px 24px;
@@ -300,31 +286,6 @@ button:hover .button-icon {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 10px;
-}
-
-.skill {
-  width: auto;
-  margin-left: 30px;
-  margin-right: 30px;
-  background-color: #27242e;
-  border-radius: 5px;
-}
-
-.skill-bar {
-  height: 8px;
-  background: linear-gradient(90deg,#d84c6d, #4283d1);
-  border-radius: 6px;
-  text-align: right;
-  line-height: 8px;
-  color: white;
-  width: 0%;
-  transition: width 3s ease-in-out;
-}
-
-.skill-text {
-  margin-left: 30px;
-  margin-top: 4px;
 }
 
 #light {
@@ -350,14 +311,13 @@ button:hover .button-icon {
   padding:20px;
   border: 1px solid #242424;
   position: relative;
-  margin: 0px;
+  margin-bottom: 20px;
   border-radius: 10px;
   perspective: 1000px;
   transition: all 2s ease-in-out;
   z-index: 0;
   flex: 1;
   box-shadow: 0px 2px 0px #000000;
-  margin-bottom: 20px;
 }
 
 .portcardsab {
@@ -443,23 +403,11 @@ button:hover .button-icon {
   color:#1a1a1a;
 }
 
-.porttop{
-  margin-top: 45px;
-  margin-bottom: 45px;
-}
-
-.porttop p{
-  margin-left: 30px;
-}
 
 .landing{
   text-align: left;
 }
 
-.landing p{
-  padding-left: 10px;
-  padding-bottom: 7px;
-}
 .programknowledge{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
@@ -469,19 +417,23 @@ button:hover .button-icon {
 .carousel {
   width: auto;
   height: auto;
-  overflow: hidden; /* Hide anything that exceeds the container */
+  overflow: hidden;
   position: relative;
   z-index: 99;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(197, 197, 197);
 }
 
 .carousel-images {
   display: flex;
-  width: 3840PX; /* We have 10 images (5 original + 5 duplicates), so 100% * 2 */
-  animation: slide 24s linear infinite; /* Animation of sliding images */
+  width: 3840PX; 
+  animation: slide 24s linear infinite; 
 }
 
 .carousel-images img {
-  width: 384px; /* Make each image take up the full width of the carousel */
+  width: 384px; 
   height: auto;
 }
 
@@ -513,10 +465,6 @@ button:hover .button-icon {
 
 .aboutpage p{
   margin-left: 10px;
-}
-
-.skill-text{
-  padding-left: 20px;
 }
 
 .contactbut {
@@ -564,16 +512,6 @@ button:hover .button-icon {
 
 .aboutpagefp {
   padding-left: 20px;
-}
-
-.mbbfront {
-  display: block;
-  align-items: left;
-}
-
-.mbbfrontvideos {
-  width: 300px;
-  padding: 10px;
 }
 
 .highlighttag {
