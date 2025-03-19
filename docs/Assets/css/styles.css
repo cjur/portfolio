@@ -570,3 +570,7 @@ button:hover .button-icon {
     flex: 1 1 calc(50% - 20px);  /* 50% width minus the gap */
   }
 }
+
+.headerabout{
+  margin-left: 10px;
+}
