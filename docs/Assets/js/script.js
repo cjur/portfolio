@@ -6,8 +6,7 @@ window.onload = function () {
   timeout = setTimeout(function () {
     // Remove the pointer restriction and hide the loading screen
     document.querySelector('body').classList.remove('pointernone');
-    document.getElementById('loading-screen').style.display = 'none';
-  }, 1700); // Adjust timeout as needed
+  }, 500); // Adjust timeout as needed
 };
 
 
