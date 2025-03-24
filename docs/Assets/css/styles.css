@@ -69,7 +69,7 @@ footer:hover {
   transition: all 2s ease-in-out;
 }
 
-header:hover .logo-and-name {
+header:hover .logo {
   text-shadow: 
   -1px 1px 3px #ffffff,-1px 1px 20px #ffffff,
   -1px 1px 1px #1e2c3a5e,
@@ -85,7 +85,7 @@ header:hover .logo-and-name {
   transition: all 2s ease-in-out;
 }
 
-.portcards:hover .logo-and-name {
+.portcards:hover .logo {
   align-items: center;
   display: flex;
   text-shadow: 
