@@ -582,3 +582,18 @@ button:hover .button-icon {
 .headerabout{
   margin-left: 10px;
 }
+
+.outer-embed-container{
+  width: 100%;
+  max-width: 260px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -220px;
+}
+
+.embed-container{
+  transform: scale(0.66);
+  transform-origin: top left;
+  width: 100%;
+}
