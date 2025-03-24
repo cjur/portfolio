@@ -550,15 +550,20 @@ button:hover .button-icon {
 
 .outer-embed-container{
   width: 100%;
-  max-width: 260px;
+  max-width: 300px;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  margin-bottom: -220px;
+  margin-bottom: -190px;
 }
 
 .embed-container{
-  transform: scale(0.66);
+  transform: scale(0.7);
   transform-origin: top left;
   width: 100%;
+  justify-content: center;
+}
+
+.instacenter {
+  justify-content: center;
 }
