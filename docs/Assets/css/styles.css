@@ -578,6 +578,8 @@ button:hover .button-icon {
   align-items: center;
   margin-bottom: 15px;
   padding-right: 20px; 
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .search-bar {
