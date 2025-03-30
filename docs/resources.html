@@ -12,74 +12,143 @@
 <body class="pointernone">
   <div id="light"></div>
   <header id="header">
-    <div class="logo">
-      <h2>Corey Jurasek</h2>
-    </div>
-    <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
-      <img id="menu-image" src="Assets/images/menuanimation/f1.png" alt="menu-icon">
-    </div>
-    <nav id="dropdownMenu" class="dropdown-menu">
-      <ul>
-        <a href="index"><li><img class="dropdown-icon" src="Assets/images/IconHome.png">Home</li></a>
-        <a href="about"><li><img class="dropdown-icon" src="Assets/images/IconAbout.png">About</li></a>
-        <a href="portfolio"><li><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Portfolio</li></a>
-        <a href="resources"><li><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Resources</li></a>
-        <a href="contact"><li><img class="dropdown-icon" src="Assets/images/IconContact.png">Contact</li></a>
-      </ul>
-    </nav>
+      <div class="logo">
+          <h2>Corey Jurasek</h2>
+      </div>
+      <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
+          <img id="menu-image" src="Assets/images/menuanimation/f1.png" alt="menu-icon">
+      </div>
+      <nav id="dropdownMenu" class="dropdown-menu">
+          <ul>
+              <a href="index"><li><img class="dropdown-icon" src="Assets/images/IconHome.png">Home</li></a>
+              <a href="about"><li><img class="dropdown-icon" src="Assets/images/IconAbout.png">About</li></a>
+              <a href="portfolio"><li><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Portfolio</li></a>
+              <a href="resources"><li class="active"><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Resources</li></a>
+              <a href="contact"><li><img class="dropdown-icon" src="Assets/images/IconContact.png">Contact</li></a>
+          </ul>
+      </nav>
   </header>
   <main>
-    <div class="container">
-    <div id="portcards" class="portcards fade-in">
-      <h1>Resources</h1>
-    </div>
-  </div>
-    <div class="containerport">
-    <a href="https://drive.google.com/file/d/1rU6rrAa5o8b6cOz0Ylusr5W1_pH1Hk8a/view?usp=sharing" class="portlink">
-      <div id="portcards" class="portcards fade-in">
-        <div>
-        <h3>College Football 26 SVG (Google Drive)</h3>
-        <p>Scalable vector file for CFB26, the work I did was recreating a number 6 with the pen tool.</p>
-        </div>
-        <img class="portcardimg" src="Assets/images/cfb26 svg.jpg" alt="cfb26 svg">
+      <div class="container">
+          <div id="portcards" class="portcards fade-in">
+              <h1>Resources</h1>
+          </div>
       </div>
-      </a>
 
-
-    <a href="https://drive.google.com/file/d/1dJJg5XHq7r4lLkV8lN_qQLb5USrYkrES/view?usp=sharing" class="portlink">
-      <div id="portcards" class="portcards fade-in">
-        <div>
-        <h3>Madden 26 SVG (Google Drive)</h3>
-        <p>Scalable vector file for Madden26, the work I did was recreating a number 6 with the pen tool.</p>
-        </div>
-        <img class="portcardimg" src="Assets/images/madden26 svg.jpg" alt="madden26">
+      <div class="resource-container">
+          <div class="resource-controls">
+              <div class="search-bar">
+                  <input type="text" id="search-input" class="search-input" placeholder="Search resources...">
+              </div>
+              <div class="sort-settings">
+                  <label for="sort-by" class="sort-label">Sort by:</label>
+                  <select id="sort-by" class="sort-select">
+                    <option value="title">Title</option>
+                    <option value="date">Date</option>
+                </select>
+              </div>
+          </div>
+          <div class="resource-list" id="resource-list">
+              </div>
       </div>
-      </a>
 
-      <a href="https://drive.google.com/file/d/1bwKkGjM9xT8llEVyYLYhhWPAsyac35an/view?usp=sharing" class="portlink">
-      <div id="portcards" class="portcards fade-in">
-        <div>
-        <h3>Playstation 5 Disc Case Mockup (Google Drive)</h3>
-        <p>Photoshop file for Disc Case Mockup. 3840px x 3840px</p>
-        </div>
-        <img class="portcardimg" src="Assets/images/PS5 Disc Case Mockup.jpg" alt="ps5mock">
-      </div>
-      </a>
-
-
-    <a href="https://drive.google.com/file/d/1Fy6l7W9JkUJMHvvrgZNu2wztBpJLrxFw/view?usp=sharing" class="portlink">
-      <div id="portcards" class="portcards fade-in">
-        <div>
-        <h3>Xbox Series X Disc Case Mockup (Google Drive)</h3>
-        <p>Photoshop file for Disc Case Mockup. 3840px x 3840px</p>
-        </div>
-        <img class="portcardimg" src="Assets/images/Xbox Series X Disc Case Mockup.jpg" alt="xboxsxmock">
-      </div>
-      </a>
-        </div>
-        <div class="container">
+      <div class="container">
           <div class="fade-in portcards"><p>© Corey Jurasek 2025</p></div>
-        </div>
+      </div>
+  </main>
+  
+  <script>
+    const resourceListContainer = document.getElementById('resource-list');
+    const searchInput = document.getElementById('search-input');
+    const sortBySelect = document.getElementById('sort-by');
+
+    const csvFilePath = 'Assets/resources.csv';
+
+    function parseCSV(csvText) {
+        const lines = csvText.trim().split('\n');
+        const headers = lines[0].split(',');
+        const resources = [];
+        for (let i = 1; i < lines.length; i++) {
+            const values = lines[i].split(',');
+            const resource = {};
+            for (let j = 0; j < headers.length; j++) {
+                resource[headers[j].trim()] = values[j].trim();
+            }
+            resources.push(resource);
+        }
+        return resources;
+    }
+
+    function displayResources(resources) {
+        resourceListContainer.innerHTML = '';
+        resources.forEach(resource => {
+            const resourceItem = document.createElement('a');
+            resourceItem.classList.add('resource-item');
+            resourceItem.href = resource.Link;
+            resourceItem.target = "_blank";
+            const detailsDiv = document.createElement('div');
+            detailsDiv.classList.add('resource-item-details');
+            const titleHeading = document.createElement('h3');
+            titleHeading.textContent = resource.Title;
+            const descriptionParagraph = document.createElement('p');
+            descriptionParagraph.textContent = resource.Description;
+            detailsDiv.appendChild(titleHeading);
+            detailsDiv.appendChild(descriptionParagraph);
+            const mainImageElement = document.createElement('img');
+            mainImageElement.src = resource.Image;
+            mainImageElement.alt = resource.Title;
+            mainImageElement.classList.add('portcardimg');
+            resourceItem.appendChild(detailsDiv);
+            resourceItem.appendChild(mainImageElement);
+            resourceListContainer.appendChild(resourceItem);
+        });
+    }
+
+    function filterResources(searchTerm) {
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+        return fetchedResources.filter(resource =>
+            resource.Title.toLowerCase().includes(lowerCaseSearchTerm) ||
+            resource.Description.toLowerCase().includes(lowerCaseSearchTerm)
+        );
+    }
+
+    function sortResources(sortBy) {
+        return [...fetchedResources].sort((a, b) => {
+            if (sortBy === 'title') {
+                return a.Title.localeCompare(b.Title);
+            } else if (sortBy === 'date') {
+                return new Date(b.Date) - new Date(a.Date);
+            }
+            return 0;
+        });
+    }
+
+    let fetchedResources = [];
+
+    fetch(csvFilePath)
+        .then(response => response.text())
+        .then(csvData => {
+            fetchedResources = parseCSV(csvData);
+            displayResources(sortResources(sortBySelect.value));
+        })
+        .catch(error => {
+            console.error('Error fetching CSV:', error);
+        });
+
+    searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value;
+        const filteredResources = filterResources(searchTerm);
+        const sortedFilteredResources = sortResources(sortBySelect.value);
+        displayResources(sortedFilteredResources);
+    });
+
+    sortBySelect.addEventListener('change', () => {
+        const searchTerm = searchInput.value;
+        const filteredResources = filterResources(searchTerm);
+        const sortedFilteredResources = sortResources(sortBySelect.value);
+        displayResources(sortedFilteredResources);
+    });
+</script>
   </main>
   <script src="Assets/js/script.js"></script>
 </body>

@@ -10,7 +10,6 @@ window.onload = function () {
 };
 
 
-// script.js
 let menuOpen = false;
 const menu = document.getElementById("dropdownMenu");
 const menuImage = document.getElementById("menu-image");
