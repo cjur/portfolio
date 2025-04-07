@@ -661,6 +661,10 @@ button:hover .button-icon {
   .resource-item-details p {
       display: none;
   }
+
+  .sort-label{
+    display: none;
+  }
 }
 
 .sort-direction-button {
