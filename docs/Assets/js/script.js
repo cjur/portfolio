@@ -181,3 +181,126 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+const resourceListContainer = document.getElementById('resource-list');
+    const searchInput = document.getElementById('search-input');
+    const sortBySelect = document.getElementById('sort-by');
+    const sortDirectionButton = document.getElementById('sort-direction');
+
+    const csvFilePath = 'Assets/resources.csv';
+
+    let fetchedResources = [];
+    let currentSortDirection = 'asc'; // Default sort direction
+
+
+    sortDirectionButton.addEventListener('click', () => {
+      if (sortDirectionButton.textContent === '▲') {
+        sortDirectionButton.textContent = '▼';
+      } else {
+        sortDirectionButton.textContent = '▲';
+      }
+    });
+
+    function parseCSV(csvText) {
+      const lines = csvText.trim().split('\n');
+      const headers = lines[0].split(',');
+      const resources = [];
+      for (let i = 1; i < lines.length; i++) {
+        const values = lines[i].split(',');
+        const resource = {};
+        for (let j = 0; j < headers.length; j++) {
+          resource[headers[j].trim()] = values[j].trim();
+        }
+        resources.push(resource);
+      }
+      return resources;
+    }
+
+    function displayResources(resources) {
+      resourceListContainer.innerHTML = '';
+      resources.forEach(resource => {
+        const resourceItem = document.createElement('a');
+        resourceItem.classList.add('resource-item');
+        resourceItem.href = resource.Link;
+        resourceItem.target = "_blank";
+        const detailsDiv = document.createElement('div');
+        detailsDiv.classList.add('resource-item-details');
+        const titleHeading = document.createElement('h3');
+        titleHeading.textContent = resource.Title;
+        const descriptionParagraph = document.createElement('p');
+        descriptionParagraph.textContent = resource.Description;
+        detailsDiv.appendChild(titleHeading);
+        detailsDiv.appendChild(descriptionParagraph);
+        const mainImageElement = document.createElement('img');
+        mainImageElement.src = resource.Image;
+        mainImageElement.alt = resource.Title;
+        mainImageElement.classList.add('portcardimg');
+        resourceItem.appendChild(detailsDiv);
+        resourceItem.appendChild(mainImageElement);
+        resourceListContainer.appendChild(resourceItem);
+      });
+    }
+
+    function filterResources(searchTerm) {
+      const lowerCaseSearchTerm = searchTerm.toLowerCase();
+      return fetchedResources.filter(resource =>
+        resource.Title.toLowerCase().includes(lowerCaseSearchTerm) ||
+        resource.Description.toLowerCase().includes(lowerCaseSearchTerm)
+      );
+    }
+
+    function sortResources(sortBy, resourcesToSort, direction = 'asc') {
+      const sortedResources = [...resourcesToSort];
+      sortedResources.sort((a, b) => {
+        let comparison = 0;
+        if (sortBy === 'title') {
+          comparison = a.Title.localeCompare(b.Title);
+        } else if (sortBy === 'date') {
+          const dateA = new Date(a.Date);
+          const dateB = new Date(b.Date);
+          comparison = dateA - dateB;
+        }
+        return direction === 'desc' ? comparison * -1 : comparison;
+      });
+      return sortedResources;
+    }
+
+    function updateSortDirectionButton() {
+      sortDirectionButton.classList.remove('asc', 'desc');
+      sortDirectionButton.classList.add(currentSortDirection);
+    }
+
+    fetch(csvFilePath)
+      .then(response => response.text())
+      .then(csvData => {
+        fetchedResources = parseCSV(csvData);
+        displayResources(sortResources(sortBySelect.value, fetchedResources, currentSortDirection));
+        
+      })
+      .catch(error => {
+        console.error('Error fetching CSV:', error);
+      });
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value;
+      const filteredResources = filterResources(searchTerm);
+      const sortedFilteredResources = sortResources(sortBySelect.value, filteredResources, currentSortDirection);
+      displayResources(sortedFilteredResources);
+    });
+
+    sortBySelect.addEventListener('change', () => {
+      const searchTerm = searchInput.value;
+      const filteredResources = filterResources(searchTerm);
+      const sortedFilteredResources = sortResources(sortBySelect.value, filteredResources, currentSortDirection);
+      displayResources(sortedFilteredResources);
+    });
+
+    sortDirectionButton.addEventListener('click', () => {
+      currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+      updateSortDirectionButton();
+      const searchTerm = searchInput.value;
+      const filteredResources = filterResources(searchTerm);
+      const sortedFilteredResources = sortResources(sortBySelect.value, filteredResources, currentSortDirection);
+      displayResources(sortedFilteredResources);
+    });
+  
+    updateSortDirectionButton();

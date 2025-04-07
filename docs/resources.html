@@ -5,162 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="Assets/css/styles.css">
-  <link rel="icon" type="image/x-icon" href="Assets/images/corey jurasek icon.svg"> 
+  <link rel="icon" type="image/x-icon" href="Assets/images/corey jurasek icon.svg">
   <title>Corey Jurasek</title>
 </head>
 
 <body class="pointernone">
   <div id="light"></div>
   <header id="header">
-      <div class="logo">
-          <h2>Corey Jurasek</h2>
-      </div>
-      <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
-          <img id="menu-image" src="Assets/images/menuanimation/f1.png" alt="menu-icon">
-      </div>
-      <nav id="dropdownMenu" class="dropdown-menu">
-          <ul>
-              <a href="index"><li><img class="dropdown-icon" src="Assets/images/IconHome.png">Home</li></a>
-              <a href="about"><li><img class="dropdown-icon" src="Assets/images/IconAbout.png">About</li></a>
-              <a href="portfolio"><li><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Portfolio</li></a>
-              <a href="resources"><li class="active"><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Resources</li></a>
-              <a href="contact"><li><img class="dropdown-icon" src="Assets/images/IconContact.png">Contact</li></a>
-          </ul>
-      </nav>
+    <div class="logo">
+      <h2>Corey Jurasek</h2>
+    </div>
+    <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
+      <img id="menu-image" src="Assets/images/menuanimation/f1.png" alt="menu-icon">
+    </div>
+    <nav id="dropdownMenu" class="dropdown-menu">
+      <ul>
+        <a href="index">
+          <li><img class="dropdown-icon" src="Assets/images/IconHome.png">Home</li>
+        </a>
+        <a href="about">
+          <li><img class="dropdown-icon" src="Assets/images/IconAbout.png">About</li>
+        </a>
+        <a href="portfolio">
+          <li><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Portfolio</li>
+        </a>
+        <a href="resources">
+          <li class="active"><img class="dropdown-icon" src="Assets/images/IconPortfolio.png">Resources</li>
+        </a>
+        <a href="contact">
+          <li><img class="dropdown-icon" src="Assets/images/IconContact.png">Contact</li>
+        </a>
+      </ul>
+    </nav>
   </header>
   <main>
-      <div class="container">
-          <div id="portcards" class="portcards fade-in">
-              <h1>Resources</h1>
-          </div>
+    <div class="container">
+      <div id="portcards" class="portcards fade-in">
+        <h1>Resources</h1>
+        <p>Collection of graphic design resources.</p>
       </div>
+    </div>
 
-      <div class="resource-container fade-in">
-          <div class="resource-controls portcards">
-              <div class="search-bar">
-                  <input type="text" id="search-input" class="search-input" placeholder="Search resources...">
-              </div>
-              <div class="sort-settings">
-                  <label for="sort-by" class="sort-label">Sort by:</label>
-                  <select id="sort-by" class="sort-select">
-                    <option value="title">Title</option>
-                    <option value="date">Date</option>
-                </select>
-              </div>
-          </div>
-          <div class="resource-list" id="resource-list">
-              </div>
+    <div class="resource-container fade-in">
+      <div class="resource-controls portcards">
+        <div class="search-bar">
+          <input type="text" id="search-input" class="search-input" placeholder="Search resources...">
+        </div>
+        <div class="sort-settings">
+          <label for="sort-by" class="sort-label">Sort by:</label>
+          <select id="sort-by" class="sort-select">
+            <option value="title">Title</option>
+            <option value="date">Date</option>
+          </select>
+          <button id="sort-direction" class="sort-direction-button ascending">▲</button>
+        </div>
       </div>
+      <div class="resource-list" id="resource-list">
+      </div>
+    </div>
 
-      <div class="container">
-          <div class="fade-in portcards"><p>© Corey Jurasek 2025</p></div>
+    <div class="container">
+      <div class="fade-in portcards">
+        <p>© Corey Jurasek 2025</p>
       </div>
+    </div>
   </main>
-  
-  <script>
-    const resourceListContainer = document.getElementById('resource-list');
-    const searchInput = document.getElementById('search-input');
-    const sortBySelect = document.getElementById('sort-by');
-
-    const csvFilePath = 'Assets/resources.csv';
-
-    function parseCSV(csvText) {
-        const lines = csvText.trim().split('\n');
-        const headers = lines[0].split(',');
-        const resources = [];
-        for (let i = 1; i < lines.length; i++) {
-            const values = lines[i].split(',');
-            const resource = {};
-            for (let j = 0; j < headers.length; j++) {
-                resource[headers[j].trim()] = values[j].trim();
-            }
-            resources.push(resource);
-        }
-        return resources;
-    }
-
-    function displayResources(resources) {
-        resourceListContainer.innerHTML = '';
-        resources.forEach(resource => {
-            const resourceItem = document.createElement('a');
-            resourceItem.classList.add('resource-item');
-            resourceItem.href = resource.Link;
-            resourceItem.target = "_blank";
-            const detailsDiv = document.createElement('div');
-            detailsDiv.classList.add('resource-item-details');
-            const titleHeading = document.createElement('h3');
-            titleHeading.textContent = resource.Title;
-            const descriptionParagraph = document.createElement('p');
-            descriptionParagraph.textContent = resource.Description;
-            detailsDiv.appendChild(titleHeading);
-            detailsDiv.appendChild(descriptionParagraph);
-            const mainImageElement = document.createElement('img');
-            mainImageElement.src = resource.Image;
-            mainImageElement.alt = resource.Title;
-            mainImageElement.classList.add('portcardimg');
-            resourceItem.appendChild(detailsDiv);
-            resourceItem.appendChild(mainImageElement);
-            resourceListContainer.appendChild(resourceItem);
-        });
-    }
-
-    function filterResources(searchTerm) {
-    const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    return fetchedResources.filter(resource =>
-        resource.Title.toLowerCase().includes(lowerCaseSearchTerm) ||
-        resource.Description.toLowerCase().includes(lowerCaseSearchTerm)
-    );
-}
-
-    function sortResources(sortBy) {
-        return [...fetchedResources].sort((a, b) => {
-            if (sortBy === 'title') {
-                return a.Title.localeCompare(b.Title);
-            } else if (sortBy === 'date') {
-                return new Date(b.Date) - new Date(a.Date);
-            }
-            return 0;
-        });
-    }
-
-    let fetchedResources = [];
-
-    fetch(csvFilePath)
-    .then(response => response.text())
-    .then(csvData => {
-        fetchedResources = parseCSV(csvData);
-        console.log("Fetched Resources:", fetchedResources);
-        displayResources(sortResources(sortBySelect.value, fetchedResources)); // Initial display with sorting
-    })
-    .catch(error => {
-        console.error('Error fetching CSV:', error);
-    });
-
-        searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value;
-    const filteredResources = filterResources(searchTerm);
-    const sortedFilteredResources = sortResources(sortBySelect.value, filteredResources); // Pass filteredResources here
-    displayResources(sortedFilteredResources);
-});
-
-function sortResources(sortBy, resourcesToSort) {
-    return [...resourcesToSort].sort((a, b) => {
-        if (sortBy === 'title') {
-            return a.Title.localeCompare(b.Title);
-        } else if (sortBy === 'date') {
-            return new Date(b.Date) - new Date(a.Date);
-        }
-        return 0;
-    });
-}
-
-    sortBySelect.addEventListener('change', () => {
-        const searchTerm = searchInput.value;
-        const filteredResources = filterResources(searchTerm);
-        const sortedFilteredResources = sortResources(sortBySelect.value);
-        displayResources(sortedFilteredResources);
-    });
-</script>
   </main>
   <script src="Assets/js/script.js"></script>
 </body>

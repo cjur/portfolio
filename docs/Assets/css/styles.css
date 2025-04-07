@@ -662,3 +662,32 @@ button:hover .button-icon {
       display: none;
   }
 }
+
+.sort-direction-button {
+  color: #fff; /* Basic text color */
+  padding: 8px 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 10px; /* Ensure the font size is not zero */
+  text-align: center;
+  display: inline-block; /* Or inline-block */
+  align-items: center;
+  justify-content: center; /* Center the arrow if needed */
+  box-shadow: none; /* Remove complex shadows for simplicity */
+  transition: all 1s ease;
+}
+
+.sort-direction-button:hover {
+  background-color: #e0e0e0;
+  color: #1a1a1a;
+  border-color: #1a1a1a;
+  font-size: 10px;
+  transition: all 1s ease;
+}
+
+.sort-settings {
+  display: flex;
+  align-items: center;
+}
