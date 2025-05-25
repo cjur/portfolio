@@ -565,6 +565,7 @@ button:hover .button-icon {
 
 .instacenter {
   justify-content: center;
+  align-content: center;
 }
 
 .resource-container {
