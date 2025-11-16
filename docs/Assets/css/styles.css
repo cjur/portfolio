@@ -367,6 +367,16 @@ button:hover .button-icon {
   }
 }
 
+@media (max-width: 600px) {
+  .portfolio-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
 .portcards h3,p{
   margin-left: 10px;
   max-width: 450px;
