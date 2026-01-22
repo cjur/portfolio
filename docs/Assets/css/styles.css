@@ -236,7 +236,7 @@ p {
 
 button{
   font-family: 'DM Sans', sans-serif;
-  font-weight: bold;
+  font-weight: 450;
   background: linear-gradient( 140deg, rgb(66, 66, 66) 0%,#141414 50%);
   color:#fff;
   padding: 12px 24px;
@@ -722,4 +722,10 @@ button:hover .button-icon {
 .sort-settings {
   display: flex;
   align-items: center;
+}
+
+.work-icon {
+  height: 40px;
+  display: flex;
+  margin-right: 5px;
 }
