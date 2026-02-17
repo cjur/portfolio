@@ -432,7 +432,7 @@ button:hover .button-icon {
 .carousel-images {
   display: flex;
   width: 7680PX; 
-  animation: slide 22s linear infinite; 
+  animation: slide 30s linear infinite; 
 }
 
 .carousel-images img {
