@@ -431,13 +431,13 @@ button:hover .button-icon {
 
 .carousel-images {
   display: flex;
-  width: 3840PX; 
-  animation: slide 24s linear infinite; 
+  width: 7680PX; 
+  animation: slide 22s linear infinite; 
 }
 
 .carousel-images img {
-  width: 384px; 
-  height: auto;
+  width: 3840PX; 
+  height: 384px;
 }
 
 @keyframes slide {
@@ -445,7 +445,7 @@ button:hover .button-icon {
       transform: translateX(0); 
   }
   100% {
-      transform: translateX(-1920px); 
+      transform: translateX(-3840px); 
   }
 }
 
