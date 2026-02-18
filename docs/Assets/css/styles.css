@@ -437,7 +437,7 @@ button:hover .button-icon {
 
 .carousel-images img {
   width: 3840PX; 
-  height: 250px;
+  height: 384px;
 }
 
 @keyframes slide {
