@@ -4,10 +4,29 @@
 var timeout;
 window.onload = function () {
   timeout = setTimeout(function () {
-    // Remove the pointer restriction and hide the loading screen
     document.querySelector('body').classList.remove('pointernone');
-  }, 500); // Adjust timeout as needed
+  }, 500);
+
+  // Carousel fix for in-app browsers
+  const track = document.querySelector(".carousel-track");
+  if (track) {
+    track.style.animation = "none";
+    track.offsetHeight;
+    track.style.animation = "";
+  }
 };
+
+// Restart carousel when tab becomes visible (Instagram, TikTok, etc.)
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    const track = document.querySelector(".carousel-track");
+    if (track) {
+      track.style.animation = "none";
+      track.offsetHeight;
+      track.style.animation = "";
+    }
+  }
+});
 
 
 let menuOpen = false;
