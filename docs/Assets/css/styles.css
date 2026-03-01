@@ -418,47 +418,47 @@ button:hover .button-icon {
 }
 
 .carousel {
-  width: auto;
-  height: auto;
   overflow: hidden;
   position: relative;
-  z-index: 99;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin: 0 20px;
   border-radius: 10px;
   border: 1px solid rgb(197, 197, 197);
 }
 
-.carousel-images {
+.carousel-track {
   display: flex;
-  width: 7680PX; 
-  animation: slide 30s linear infinite; 
+  width: max-content;
+  animation: slide 30s linear infinite;
 }
 
-.carousel-images img {
-  width: 3840PX; 
-  height: 384px;
+.carousel-track img {
+  height: 384px;   /* adjust as needed */
+  width: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
 }
 
 @keyframes slide {
-  0% {
-      transform: translateX(0); 
-  }
-  100% {
-      transform: translateX(-3840px); 
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
+/* Fade edges */
 .carousel::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.6) -10%, rgba(255, 255, 255, 0) 40%), linear-gradient(180deg, rgba(255, 255, 255, .6) -10%, rgba(255, 255, 255, 0) 40%);
-  background: linear-gradient(-90deg, rgba(255, 255, 255, 0.712) -10%, rgba(255, 255, 255, 0) 25%), linear-gradient(90deg, rgb(255, 255, 255,0.712) -10%, rgba(255, 255, 255, 0) 25%);
+  inset: 0;
+  background:
+    linear-gradient(90deg,  rgba(255,255,255,0.8) 0%, transparent 20%),
+    linear-gradient(-90deg, rgba(255,255,255,0.8) 0%, transparent 20%);
   pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .carousel-track img {
+    height: 180px;
+  }
 }
 
 .aboutpage .portcards{
