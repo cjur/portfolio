@@ -80,7 +80,7 @@ function playIconAnimation() {
 function animateImages(forward) {
   isAnimating = true;
   
-  const frameDelay = 65; // milliseconds per frame
+  const frameDelay = 60; // milliseconds per frame
   let currentIndex = forward ? 0 : images.length - 1;
   let lastFrameTime = performance.now();
   
@@ -187,40 +187,6 @@ document.addEventListener('mouseenter', () => {
 
 document.addEventListener('mouseleave', () => {
   light.style.opacity = '0';
-});
-
-//tilt for header and footer
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.getElementById('header');
-  const footer = document.getElementById('footer');
-  const portcards = document.querySelectorAll('.portcards'); // Select all elements with the class 'portcards'
-
-  const handleMouseMove = (element, event) => {
-    const { offsetX, offsetY, target } = event;
-    const { offsetWidth, offsetHeight } = target;
-    const halfWidth = offsetWidth/2;
-    const halfHeight = offsetHeight/2;
-    
-    const rotateX = ((offsetY - halfHeight) / halfHeight) * -32; // 10 degrees max rotation
-    const rotateY = ((offsetX - halfWidth) / halfWidth) * -32; // 10 degrees max rotation
-
-    element.style.transform = `rotateX(${rotateX0}deg+8) rotateY(${rotateY0}deg-8) scale(1.006)`;
-  };
-
-  const resetTransform = (element) => {
-    element.style.transform = 'rotateX(0deg) rotateY(0deg)';
-  };
-
-  header.addEventListener('mousemove', (e) => handleMouseMove(header, e));
-  footer.addEventListener('mousemove', (e) => handleMouseMove(footer, e));
-
-  header.addEventListener('mouseleave', () => resetTransform(header));
-  footer.addEventListener('mouseleave', () => resetTransform(footer));
-
-  portcards.forEach(portcard => {
-    portcard.addEventListener('mousemove', (e) => handleMouseMove(portcard, e));
-    portcard.addEventListener('mouseleave', () => resetTransform(portcard));
-  });
 });
 
 const resourceListContainer = document.getElementById('resource-list');
