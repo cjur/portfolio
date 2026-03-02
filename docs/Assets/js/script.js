@@ -148,22 +148,30 @@ function animateSkills() {
 document.addEventListener("DOMContentLoaded", animateSkills);
 
 
-//Light following cursor
+// performant light-following cursor
+const light = document.getElementById('light');
+let mouseX = 0, mouseY = 0;
+let ticking = false;
 
-document.addEventListener('mousemove', function(e) {
-  const light = document.getElementById('light');
-  light.style.left = `${e.pageX}px`;
-  light.style.top = `${e.pageY}px`;
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      // position using a GPU-accelerated transform (center the element)
+      light.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      ticking = false;
+    });
+    ticking = true;
+  }
 });
 
-document.addEventListener('mouseenter', function() {
-  const light = document.getElementById('light');
-  light.style.opacity = 1; // Show the light
+document.addEventListener('mouseenter', () => {
+  light.style.opacity = '1';
 });
 
-document.addEventListener('mouseleave', function() {
-  const light = document.getElementById('light');
-  light.style.opacity = 0; // Hide the light
+document.addEventListener('mouseleave', () => {
+  light.style.opacity = '0';
 });
 
 //tilt for header and footer
