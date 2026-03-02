@@ -55,47 +55,62 @@ function preloadImages(imageArray) {
 }
 preloadImages(images);
 
-function toggleMenu() {
-  // Toggle the menu visibility
-  menu.classList.toggle("show");
+// Animation state
+let animationFrameId = null;
+let isAnimating = false;
 
-  // Trigger the animation on the icon (depending on whether the menu is open or closed)
+function toggleMenu() {
+  // Prevent multiple clicks during animation
+  if (isAnimating) return;
+  
+  menu.classList.toggle("show");
   playIconAnimation();
 }
 
 function playIconAnimation() {
-  // If the menu is open, play forward; if closed, play backward
-  if (menu.classList.contains("show")) {
-    // Menu is opening -> play forward animation
-    animateImagesForward();
-  } else {
-    // Menu is closing -> play backward animation
-    animateImagesBackward();
+  // Cancel any running animation
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
   }
+  
+  const isOpening = menu.classList.contains("show");
+  animateImages(isOpening);
 }
 
-function animateImagesForward() {
-  let currentIndex = 0; // Start with f1.png
-  const interval = setInterval(() => {
-    menuImage.src = images[currentIndex];
-    currentIndex++;
-
-    if (currentIndex >= images.length) {
-      clearInterval(interval); // Stop the animation after the last image
+function animateImages(forward) {
+  isAnimating = true;
+  
+  const frameDelay = 65; // milliseconds per frame
+  let currentIndex = forward ? 0 : images.length - 1;
+  let lastFrameTime = performance.now();
+  
+  function animate(currentTime) {
+    const elapsed = currentTime - lastFrameTime;
+    
+    if (elapsed >= frameDelay) {
+      menuImage.src = images[currentIndex];
+      lastFrameTime = currentTime;
+      
+      // Update index
+      if (forward) {
+        currentIndex++;
+        if (currentIndex >= images.length) {
+          isAnimating = false;
+          return; // Stop animation
+        }
+      } else {
+        currentIndex--;
+        if (currentIndex < 0) {
+          isAnimating = false;
+          return; // Stop animation
+        }
+      }
     }
-  }, 100); // Change image every 130ms (adjust timing as needed)
-}
-
-function animateImagesBackward() {
-  let currentIndex = images.length - 1; // Start with f8.png
-  const interval = setInterval(() => {
-    menuImage.src = images[currentIndex];
-    currentIndex--;
-
-    if (currentIndex < 0) {
-      clearInterval(interval); // Stop the animation after the first image
-    }
-  }, 100); // Change image every 130ms (adjust timing as needed)
+    
+    animationFrameId = requestAnimationFrame(animate);
+  }
+  
+  animationFrameId = requestAnimationFrame(animate);
 }
 
 
