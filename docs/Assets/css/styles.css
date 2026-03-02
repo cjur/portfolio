@@ -436,7 +436,7 @@ button:hover .button-icon {
 .carousel {
   overflow: hidden;
   position: relative;
-  margin: 0 20px;
+  margin: 20px 20px;
   border-radius: 10px;
   border: 1px solid #242424;
 }
