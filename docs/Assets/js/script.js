@@ -62,7 +62,6 @@ let isAnimating = false;
 function toggleMenu() {
   // Prevent multiple clicks during animation
   if (isAnimating) return;
-  
   menu.classList.toggle("show");
   playIconAnimation();
 }
@@ -80,7 +79,7 @@ function playIconAnimation() {
 function animateImages(forward) {
   isAnimating = true;
   
-  const frameDelay = 60; // milliseconds per frame
+  const frameDelay = 120; // milliseconds per frame
   let currentIndex = forward ? 0 : images.length - 1;
   let lastFrameTime = performance.now();
   
@@ -135,58 +134,6 @@ let observer = new IntersectionObserver(callbacks,options);
 
 elements.forEach(element =>{
   observer.observe(element);
-});
-
-
-function animateSkills() {
-  const skills = document.querySelectorAll('.skill-bar');
-  const widths = {
-      'novice': '50%',
-      'adv-beginner': '60%',
-      'competent': '70%',
-      'proficient': '90%',
-      'expert': '100%'
-  };
-
-  skills.forEach(skill => {
-      const classes = skill.className.split(' ');
-      classes.forEach(cls => {
-          if (widths[cls]) {
-              setTimeout(() => {
-                  skill.style.width = widths[cls];
-              }, 100);
-          }
-      });
-  });
-}
-
-document.addEventListener("DOMContentLoaded", animateSkills);
-
-
-// performant light-following cursor
-const light = document.getElementById('light');
-let mouseX = 0, mouseY = 0;
-let ticking = false;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      // position using a GPU-accelerated transform (center the element)
-      light.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
-
-document.addEventListener('mouseenter', () => {
-  light.style.opacity = '1';
-});
-
-document.addEventListener('mouseleave', () => {
-  light.style.opacity = '0';
 });
 
 const resourceListContainer = document.getElementById('resource-list');

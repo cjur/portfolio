@@ -152,6 +152,7 @@ header:hover .logo {
   right: 0;
   top: 65px;
   z-index: 99999;
+  
 }
 
 .dropdown-menu ul {
@@ -172,7 +173,6 @@ header:hover .logo {
   font-size: 14px;
   text-align: center;
   z-index: 99999;
-  transition: all ease-in-out 0.6s;
 }
 
 .dropdown-menu ul li:hover{
@@ -180,7 +180,6 @@ header:hover .logo {
   color:#fff;
   border-radius: 10px;
   border: 1px solid #ffffff;
-  transition: all ease-in-out 0.6s;
 }
 
 .dropdown-menu ul a li {
@@ -199,12 +198,10 @@ header:hover .logo {
   height: 22px;
   display: flex;
   padding-right: 12px;
-  transition: all ease-in-out 0.6s;
 }
 
 .dropdown-menu ul li:hover .dropdown-icon {
   filter: invert(1);
-  transition: all ease-in-out 0.6s;
 }
 
 a {
@@ -312,24 +309,6 @@ button:hover .button-icon {
   margin:10px;
 }
 
-#light {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgb(32,162,255) 0%, rgb(255,44,125) 65%);
-  mix-blend-mode: lighten;
-  pointer-events: none;
-  z-index: 999;
-  opacity: 0;
-  transform: translate3d(-50%, -50%, 0);
-  will-change: transform, opacity;
-  /* reduce or remove heavy blur if possible */
-  filter: blur(8px);
-  transition: opacity 200ms linear;
-}
 
 .portcards {
   display: flexbox;
@@ -519,7 +498,8 @@ button:hover .button-icon {
   opacity: 0;
   position: absolute;
   transform: translateY(-90px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition: all 1s ease-in-out;
+
 }
 
 .dropdown-menu.show {
@@ -527,6 +507,7 @@ button:hover .button-icon {
   position: absolute;
   opacity: 1;
   transform: translateY(0);
+  transition: all 1s ease-in-out;
 }
 
 .aboutpagefp {
