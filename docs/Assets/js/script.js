@@ -1,35 +1,31 @@
 
 
+// The carousel is plain HTML/CSS. This just nudges the animation to restart
+// in in-app browsers (Instagram, TikTok, etc.) that pause it on load.
+function restartCarouselAnimation(track) {
+  if (!track) return;
+  track.style.animation = "none";
+  track.offsetHeight; // force reflow
+  track.style.animation = "";
+}
 
-var timeout;
+let timeout;
 window.onload = function () {
   timeout = setTimeout(function () {
     document.querySelector('body').classList.remove('pointernone');
   }, 500);
 
-  // Carousel fix for in-app browsers
-  const track = document.querySelector(".carousel-track");
-  if (track) {
-    track.style.animation = "none";
-    track.offsetHeight;
-    track.style.animation = "";
-  }
+  restartCarouselAnimation(document.querySelector(".carousel-track"));
 };
 
 // Restart carousel when tab becomes visible (Instagram, TikTok, etc.)
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
-    const track = document.querySelector(".carousel-track");
-    if (track) {
-      track.style.animation = "none";
-      track.offsetHeight;
-      track.style.animation = "";
-    }
+    restartCarouselAnimation(document.querySelector(".carousel-track"));
   }
 });
 
 
-let menuOpen = false;
 const menu = document.getElementById("dropdownMenu");
 const menuImage = document.getElementById("menu-image");
 
@@ -136,7 +132,10 @@ elements.forEach(element =>{
   observer.observe(element);
 });
 
+
 const resourceListContainer = document.getElementById('resource-list');
+
+if (resourceListContainer) {
     const searchInput = document.getElementById('search-input');
     const sortBySelect = document.getElementById('sort-by');
     const sortDirectionButton = document.getElementById('sort-direction');
@@ -145,15 +144,6 @@ const resourceListContainer = document.getElementById('resource-list');
 
     let fetchedResources = [];
     let currentSortDirection = 'asc'; // Default sort direction
-
-
-    sortDirectionButton.addEventListener('click', () => {
-      if (sortDirectionButton.textContent === '▲') {
-        sortDirectionButton.textContent = '▼';
-      } else {
-        sortDirectionButton.textContent = '▲';
-      }
-    });
 
     function parseCSV(csvText) {
       const lines = csvText.trim().split('\n');
@@ -220,6 +210,7 @@ const resourceListContainer = document.getElementById('resource-list');
     }
 
     function updateSortDirectionButton() {
+      sortDirectionButton.textContent = currentSortDirection === 'asc' ? '▲' : '▼';
       sortDirectionButton.classList.remove('asc', 'desc');
       sortDirectionButton.classList.add(currentSortDirection);
     }
@@ -229,7 +220,6 @@ const resourceListContainer = document.getElementById('resource-list');
       .then(csvData => {
         fetchedResources = parseCSV(csvData);
         displayResources(sortResources(sortBySelect.value, fetchedResources, currentSortDirection));
-        
       })
       .catch(error => {
         console.error('Error fetching CSV:', error);
@@ -257,5 +247,6 @@ const resourceListContainer = document.getElementById('resource-list');
       const sortedFilteredResources = sortResources(sortBySelect.value, filteredResources, currentSortDirection);
       displayResources(sortedFilteredResources);
     });
-  
+
     updateSortDirectionButton();
+}

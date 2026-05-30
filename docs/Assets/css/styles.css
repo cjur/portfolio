@@ -10,7 +10,7 @@ body {
 }
 
 main{
-  margin-top: 10;
+  margin-top: 10px;
 }
 
 h1{
@@ -81,8 +81,7 @@ footer {
 
 footer:hover {
   background: linear-gradient(0deg, #dde6ff57,#ffffff);
-  box-shadow:  inset 0px 0px 20px #ffffff;
-  box-shadow: 0px 6px 0px #000000;
+  box-shadow: inset 0px 0px 20px #ffffff, 0px 6px 0px #000000;
   border-radius: 20px;
   transition: all 2s ease-in-out;
 }
@@ -119,24 +118,6 @@ header:hover .logo {
   -128px 128px 80px #1e2c3a48, 
   -256px 256px 160px #1e2c3a48, 
   -512px 512px 400px #1e2c3a48;
-  transition: all 2s ease-in-out;
-}
-
-.logo-and-name {
-  display: flex;
-  align-items: center;
-  text-shadow: 
-  -1px 1px 3px #ffffff00,-1px 1px 20px #ffffff00,
-  -1px 1px 1px #1e2c3a00,
-  -2px 2px 2px #1e2c3a00, 
-  -4px 4px 4px #1e2c3a00, 
-  -8px 8px 8px #1e2c3a00, 
-  -16px 16px 14px #1e2c3a00, 
-  -32px 32px 25px #1e2c3a00, 
-  -64px 64px 45px #1e2c3a00, 
-  -128px 128px 80px #1e2c3a00, 
-  -256px 256px 160px #1e2c3a00, 
-  -512px 512px 400px #1e2c3a00;
   transition: all 2s ease-in-out;
 }
 
@@ -224,7 +205,7 @@ a:hover{
 }
 
 ol{
-  padding-left: 20pxpx;
+  padding-left: 20px;
   padding-bottom: 5px;
   margin-bottom: -10px;
   border-bottom: solid 1px rgb(92, 160, 255);
@@ -261,9 +242,6 @@ button{
   display: flex;
   font-size: 0px;
   border-radius: 15px;
-  box-shadow: inset -2px -4px 8px #000000;
-  box-shadow: inset -2px -2px 1px #000000;
-  box-shadow: inset 1px 1px 1px #ffffffb7;
   border: solid #ffffff 1px;
   box-shadow: 0px 0px 10px #ffffff00;
   transition:all 0.6s ease-in-out;
@@ -285,8 +263,7 @@ button:hover{
   line-height: 14px;
   font-size: 14px;
   border: solid #1a1a1a 1px;
-  box-shadow: inset 0px 0px 5px #ffffffb7;
-  box-shadow: 0px 0px 20px #ffffff5b;
+  box-shadow: inset 0px 0px 5px #ffffffb7, 0px 0px 20px #ffffff5b;
   border-radius: 10px;
   transition: all 0.6s ease-in-out;
 }
@@ -345,15 +322,10 @@ button:hover .button-icon {
   }
 
   .portcards {
-    flex: 1 1 calc(50% - 40px); 
-  }
-}
-
-@media (min-width: 1000px){
-  .portcards{
     flex: 1 1 calc(50% - 40px);
   }
-  .experience .portcards{
+
+  .experience .portcards {
     flex: 1 1 calc(50% - 40px);
   }
 }
@@ -384,8 +356,7 @@ button:hover .button-icon {
 
 .portcards:hover {
   background: linear-gradient(0deg, #eff3ff,#ffffff);
-  box-shadow:  inset 0px 0px 20px #ffffff;
-  box-shadow: 0px 6px 0px #000000;
+  box-shadow: inset 0px 0px 20px #ffffff, 0px 6px 0px #000000;
   border-radius: 20px;
   transition: all 2s ease-in-out;
   scale: 1.015;
@@ -412,12 +383,6 @@ button:hover .button-icon {
   text-align: left;
 }
 
-.programknowledge{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-  padding-top: 30px;
-}
-
 .carousel {
   overflow: hidden;
   position: relative;
@@ -430,6 +395,8 @@ button:hover .button-icon {
   display: flex;
   width: max-content;
   animation: slide 30s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .carousel-track img {
@@ -462,16 +429,19 @@ button:hover .button-icon {
   }
 }
 
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    animation: none;
+  }
+}
+
 .aboutpage .portcards{
   margin-bottom:20px;
 }
 
 .aboutpage p{
   margin-left: 10px;
-}
-
-.contactbut {
-  margin-bottom: 20px;
 }
 
 .pointernone{
@@ -515,18 +485,6 @@ button:hover .button-icon {
   transition: all 1s ease-in-out;
 }
 
-.aboutpagefp {
-  padding-left: 20px;
-}
-
-.highlighttag {
-  font-family: 'Syne', sans-serif;
-  font-weight: bold;
-  margin-bottom: -22px;
-  margin-left: 5px;
-  color:#4283d1; 
-}
-
 .h3proknow {
   padding-left: 20px;
   margin-bottom: -10px;
@@ -536,7 +494,6 @@ button:hover .button-icon {
 .imgcenter {
   display: flex;
   margin: 0 auto;
-  padding: -20px;
 }
 
 .containerport {
@@ -559,27 +516,6 @@ button:hover .button-icon {
 
 .headerabout{
   margin-left: 10px;
-}
-
-.outer-embed-container{
-  width: 100%;
-  max-width: 300px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  margin-bottom: -190px;
-}
-
-.embed-container{
-  transform: scale(0.7);
-  transform-origin: top left;
-  width: 100%;
-  justify-content: center;
-}
-
-.instacenter {
-  justify-content: center;
-  align-content: center;
 }
 
 .resource-container {
