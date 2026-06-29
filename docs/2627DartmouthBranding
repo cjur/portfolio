@@ -48,20 +48,20 @@
   <script>
     // List your image paths here — just add/remove lines:
     const images = [
-      "docs/Assets/images/Branding Look/All-Ivy.jpg",
-      "docs/Assets/images/Branding Look/Athletes of the week.jpg",
-      "docs/Assets/images/Branding Look/Birthday.jpg",
-      "docs/Assets/images/Branding Look/Gameday.jpg",
-      "docs/Assets/images/Branding Look/Ranked.jpg",
-      "docs/Assets/images/Branding Look/Schedule Poster MIH 2026-27.jpg",
-      "docs/Assets/images/Branding Look/Senior Spotlight.jpg",
-      "docs/Assets/images/Branding Look/Starting 5.jpg",
-      "docs/Assets/images/Branding Look/Televised Game.jpg",
-      "docs/Assets/images/Branding Look/This Week in Dartmouth Sports.jpg",
-      "docs/Assets/images/Branding Look/Up Next.jpg",
-      "docs/Assets/images/Branding Look/Update.jpg",
-      "docs/Assets/images/Branding Look/Welcome to the Team Staff.jpg",
-      "docs/Assets/images/Branding Look/Win.jpg"
+      "Assets/images/Branding Look/All-Ivy.jpg",
+      "Assets/images/Branding Look/Athletes of the week.jpg",
+      "Assets/images/Branding Look/Birthday.jpg",
+      "Assets/images/Branding Look/Gameday.jpg",
+      "Assets/images/Branding Look/Ranked.jpg",
+      "Assets/images/Branding Look/Schedule Poster MIH 2026-27.jpg",
+      "Assets/images/Branding Look/Senior Spotlight.jpg",
+      "Assets/images/Branding Look/Starting 5.jpg",
+      "Assets/images/Branding Look/Televised Game.jpg",
+      "Assets/images/Branding Look/This Week in Dartmouth Sports.jpg",
+      "Assets/images/Branding Look/Up Next.jpg",
+      "Assets/images/Branding Look/Update.jpg",
+      "Assets/images/Branding Look/Welcome to the Team Staff.jpg",
+      "Assets/images/Branding Look/Win.jpg"
     ];
 
     const gallery = document.getElementById("gallery");
