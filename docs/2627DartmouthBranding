@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans&display=swap" rel="stylesheet">
+  <title>2026-27 Dartmouth Sports Branding Look</title>
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: rgb(251, 252, 255);
+      color: #1a1a1a;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      text-align: center;
+      margin: 0 0 40px 0;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .gallery img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>2026-27 Dartmouth Sports Branding Look</h1>
+
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    // List your image paths here — just add/remove lines:
+    const images = [
+      "docs/Assets/images/Branding Look/All-Ivy.jpg",
+      "docs/Assets/images/Branding Look/Athletes of the week.jpg",
+      "docs/Assets/images/Branding Look/Birthday.jpg",
+      "docs/Assets/images/Branding Look/Gameday.jpg",
+      "docs/Assets/images/Branding Look/Ranked.jpg",
+      "docs/Assets/images/Branding Look/Schedule Poster MIH 2026-27.jpg",
+      "docs/Assets/images/Branding Look/Senior Spotlight.jpg",
+      "docs/Assets/images/Branding Look/Starting 5.jpg",
+      "docs/Assets/images/Branding Look/Televised Game.jpg",
+      "docs/Assets/images/Branding Look/This Week in Dartmouth Sports.jpg",
+      "docs/Assets/images/Branding Look/Up Next.jpg",
+      "docs/Assets/images/Branding Look/Update.jpg",
+      "docs/Assets/images/Branding Look/Welcome to the Team Staff.jpg",
+      "docs/Assets/images/Branding Look/Win.jpg"
+    ];
+
+    const gallery = document.getElementById("gallery");
+    images.forEach(path => {
+      const img = document.createElement("img");
+      img.src = path;
+      img.alt = "";
+      gallery.appendChild(img);
+    });
+  </script>
+
+</body>
+</html>
