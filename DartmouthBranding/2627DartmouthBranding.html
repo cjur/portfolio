@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans&display=swap" rel="stylesheet">
+  <title>2026-27 Dartmouth Sports Branding Look</title>
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: rgb(251, 252, 255);
+      color: #1a1a1a;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      text-align: center;
+      margin: 0 0 40px 0;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr; /* one column on phones */
+      gap: 20px;
+      justify-items: center;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* Two columns on tablets and small computers */
+    @media (min-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Three columns on large screens and TVs */
+    @media (min-width: 1100px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .gallery img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      cursor: pointer; /* hint that it's clickable */
+    }
+
+    /* Fullscreen overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 28px;
+      line-height: 1;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>2026-27 Dartmouth Sports Branding Look</h1>
+
+  <div class="gallery" id="gallery"></div>
+
+  <!-- Fullscreen viewer -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    // List your image paths here — just add/remove lines:
+    const images = [
+      "Assets/images/Branding Look/All-Ivy.jpg",
+      "Assets/images/Branding Look/Birthday.jpg",
+      "Assets/images/Branding Look/Gameday.jpg",
+      "Assets/images/Branding Look/Ranked.jpg",
+      "Assets/images/Branding Look/Schedule Poster MIH 2026-27.jpg",
+      "Assets/images/Branding Look/Senior Spotlight.jpg",
+      "Assets/images/Branding Look/Starting 5.jpg",
+      "Assets/images/Branding Look/Televised Game.jpg",
+      "Assets/images/Branding Look/This Week in Dartmouth Sports.jpg",
+      "Assets/images/Branding Look/Up Next.jpg",
+      "Assets/images/Branding Look/Update.jpg",
+      "Assets/images/Branding Look/Welcome to the Team Staff.jpg",
+      "Assets/images/Branding Look/Win.jpg",
+      "Assets/images/Branding Look/Web (16_9)AOTW.jpg",
+      "Assets/images/Branding Look/Socials (3_4)AOTW.jpg"
+    ];
+
+    const gallery = document.getElementById("gallery");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxClose = document.getElementById("lightbox-close");
+
+    images.forEach(path => {
+      const img = document.createElement("img");
+      img.src = path;
+      img.alt = "";
+      img.addEventListener("click", () => {
+        lightboxImg.src = path;
+        lightbox.classList.add("open");
+      });
+      gallery.appendChild(img);
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightboxImg.src = "";
+    }
+
+    // Close on X button
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    // Close on clicking the dark background (but not the image itself)
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
