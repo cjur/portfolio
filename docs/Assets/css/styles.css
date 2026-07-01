@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans&display=swap');
-
+/* Fonts are loaded via <link> in each page's <head> — do not also @import
+   here. @import blocks CSSOM construction until it resolves, and the
+   <link> tag already requests the same font, so this was a duplicate
+   fetch on every page load. */
 
 
 
@@ -40,25 +42,22 @@ header {
   margin-bottom: 20px;
   border-radius: 10px;
   perspective: 1000px;
-  transition: all 2s ease-in-out;
+  transition: all 1.2s ease-in-out;
   z-index: 101;
   box-shadow: 0px 2px 0px #000000, inset 5px 5px 120px #ffffff, inset 5px 5px 20px #ffffff, 0 1.5px 0 rgba(255,255,255,0.75) inset, 0 4px 24px rgba(0,0,0,0.07);
-  backdrop-filter: url(#motion-blur) blur(7px) saturate(130%) brightness(1) contrast(0.7);
+  backdrop-filter: blur(7px) saturate(130%) brightness(1) contrast(0.7);
   -webkit-backdrop-filter: blur(3px) saturate(130%) brightness(1);   
   background-color:#ffffff5e;
   mix-blend-mode: luminosity;
-  /* Tells the browser which properties are about to animate on hover, so it
-     allocates the composited layer for this element up front (while the page
-     is idle) instead of lazily the first time :hover actually fires. Same
-     visual result, just moves the one-time setup cost earlier and off the
-     critical path of the user's first interaction. */
+  /* Pre-promotes this element to its own layer before :hover ever fires,
+     instead of the browser allocating it lazily on first interaction. */
   will-change: scale, box-shadow, border-radius;
 }
 
 header:hover {
   border-radius: 20px;
-  transition: all 1.2s ease;
-    box-shadow: 0px 2px 0px #070d2c, inset 1px 1px 1px #ffa2a2, inset -1px -1px 1px #bfc6ff, inset -1px 1px 1px #6fff93, inset 1px -1px 1px #6fff93, inset 5px 5px 120px #ffffff, inset 5px 5px 20px #ffffff, 0 1.5px 0 rgba(255,255,255,0.75) inset, 0 4px 24px rgba(0,0,0,0.07);
+  transition: all 1.2s ease-in-out;
+  box-shadow: 0px 6px 0px #000000, inset 5px 5px 120px #ffffff, inset 5px 5px 20px #ffffff, 0 1.5px 0 rgba(255,255,255,0.75) inset, 0 4px 24px rgba(0,0,0,0.07);
   mix-blend-mode: luminosity;
   scale: 1.015;
   }
@@ -80,16 +79,16 @@ footer {
   align-items: center;
   margin: 20px;
   perspective: 1000px;
-  transition: all 2s ease-in-out;
+  transition: all 1.2s ease-in-out;
   z-index: 1;
-  box-shadow: 0px 2px 0px #000000;
+  box-shadow: 0px 2px 0px #000000, inset 0px 0px 20px rgba(255,255,255,0);
 }
 
 footer:hover {
   background: linear-gradient(0deg, #dde6ff57,#ffffff);
-  box-shadow: inset 0px 0px 20px #ffffff, 0px 6px 0px #000000;
+  box-shadow: 0px 6px 0px #000000, inset 0px 0px 20px #ffffff;
   border-radius: 20px;
-  transition: all 2s ease-in-out;
+  transition: all 1.2s ease-in-out;
 }
 
 
@@ -111,7 +110,11 @@ footer:hover {
   transition: all 2s ease-in-out;
 }
 
-.menu-icon{
+.menu-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative;
   font-size: 21px;
   padding-right: 20px;
   border-radius: 40px;
@@ -119,15 +122,22 @@ footer:hover {
   padding-top: 10px;
   padding-bottom: 10px;
   transition: all 1s ease-in-out;
+  /* Own compositing layer, isolated from the header's blend/blur surface —
+     otherwise a frame swap here can force the whole header to recomposite. */
+  isolation: isolate;
+  contain: paint;
+  will-change: transform;
 }
 
 .dropdown-menu {
   display: none;
+  opacity: 0;
   position: absolute;
   right: 0;
   top: 65px;
   z-index: 99999;
-  
+  transform: translateY(-90px);
+  transition: all 1s ease-in-out;
 }
 
 .dropdown-menu ul {
@@ -313,10 +323,10 @@ button:hover .button-icon {
   margin-bottom: 20px;
   border-radius: 10px;
   perspective: 1000px;
-  transition: all 2s ease-in-out;
+  transition: all 1.2s ease-in-out;
   z-index: 0;
   flex: 1;
-  box-shadow: 0px 2px 0px #000000;
+  box-shadow: 0px 2px 0px #000000, inset 0px 0px 20px rgba(255,255,255,0);
 }
 
 .container {
@@ -368,18 +378,12 @@ button:hover .button-icon {
 
 .portcards:hover {
   background: linear-gradient(0deg, #eff3ff,#ffffff);
-  box-shadow: inset 0px 0px 20px #ffffff, 0px 6px 0px #000000;
+  box-shadow: 0px 6px 0px #000000, inset 0px 0px 20px #ffffff;
   border-radius: 20px;
-  transition: all 2s ease-in-out;
+  transition: all 1.2s ease-in-out;
   scale: 1.015;
 }
 
-.portcards:hover .h3proknow{
-  color: #2569bd;
-  transition: all 2s ease-in-out;
-  text-shadow: 
-  0px 3px 10px rgba(151, 196, 255, 0.438);
-}
 .portcardimg {
   margin: 10px;
   border-radius: 6px;
@@ -401,6 +405,16 @@ button:hover .button-icon {
   margin: 20px 20px;
   border-radius: 10px;
   border: 1px solid #242424;
+  transition: all 1.2s ease-in-out;
+  box-shadow: 0px 2px 0px #000000;
+  will-change: scale, box-shadow, border-radius;
+}
+
+.carousel:hover {
+  border-radius: 20px;
+  box-shadow: 0px 6px 0px #000000;
+  transition: all 1.2s ease-in-out;
+  scale: 1.015;
 }
 
 .carousel-track {
@@ -456,6 +470,10 @@ button:hover .button-icon {
   margin-left: 10px;
 }
 
+.role-date {
+  font-style: italic;
+}
+
 .pointernone{
   pointer-events: none;
 }
@@ -467,34 +485,10 @@ button:hover .button-icon {
     border-radius: 50%;
 }
 
-.menu-icon {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  position: relative;
-  /* Carves the icon out into its own stacking context and compositing layer,
-     separate from the header's mix-blend-mode + backdrop-filter surface.
-     Without this, every frame swap inside can force the browser to
-     recomposite the whole blended/blurred header, not just the small icon.
-     Purely a rendering hint — no visual change. */
-  isolation: isolate;
-  contain: paint;
-  will-change: transform;
-}
-
 .menu-icon img {
   width: 100%;
   height: 100%;
   transition: opacity 0.3s ease;
-}
-
-.dropdown-menu {
-  display: none;
-  opacity: 0;
-  position: absolute;
-  transform: translateY(-90px);
-  transition: all 1s ease-in-out;
-
 }
 
 .dropdown-menu.show {
@@ -503,17 +497,6 @@ button:hover .button-icon {
   opacity: 1;
   transform: translateY(0);
   transition: all 1s ease-in-out;
-}
-
-.h3proknow {
-  padding-left: 20px;
-  margin-bottom: -10px;
-  transition: all 1s ease-in-out;
-}
-
-.imgcenter {
-  display: flex;
-  margin: 0 auto;
 }
 
 .containerport {
@@ -655,18 +638,18 @@ button:hover .button-icon {
 }
 
 .sort-direction-button {
-  color: #fff; /* Basic text color */
+  color: #fff;
   padding: 8px 12px;
   margin-left: 10px;
   cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 10px; /* Ensure the font size is not zero */
+  font-size: 10px;
   text-align: center;
-  display: inline-block; /* Or inline-block */
+  display: inline-block;
   align-items: center;
-  justify-content: center; /* Center the arrow if needed */
-  box-shadow: none; /* Remove complex shadows for simplicity */
+  justify-content: center;
+  box-shadow: none;
   transition: all 1s ease;
 }
 

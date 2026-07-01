@@ -1,3 +1,4 @@
+
 // The carousel is plain HTML/CSS. This just nudges the animation to restart
 // in in-app browsers (Instagram, TikTok, etc.) that pause it on load.
 function restartCarouselAnimation(track) {
@@ -38,10 +39,9 @@ const images = [
   "Assets/images/menuanimation/f8.png"
 ];
 
-// Preload AND fully decode every frame before we ever need to paint it.
-// Downloading a file and decoding it are two separate costs — a small file
-// can still stutter on first paint if the decode hasn't happened yet.
-// img.decode() forces that work to happen ahead of time, off the critical path.
+// Preload AND decode every frame before it's ever painted — download and
+// decode are separate costs, and a small file can still stutter on first
+// use if only the download has finished.
 const preloadedImages = [];
 let imagesReady = false;
 
@@ -68,15 +68,10 @@ function preloadImages(imageArray) {
 }
 preloadImages(images);
 
-// Decoding pixel data and actually PAINTING it on screen are two different
-// costs. Some browsers still do extra work (GPU texture upload, building
-// paint records) the very first time a given image is composited into a
-// layer, even if it's already decoded. That one-time cost is exactly what
-// makes the first click or two feel choppy while later toggles are smooth —
-// by then every frame has already been painted once.
-//
-// Fix: render all 8 frames off-screen once, right after load, so each one
-// is already warmed in the compositor before the user ever opens the menu.
+// Decoding and painting are separate costs too — some browsers do extra
+// work the first time an image is actually composited, even if decoded.
+// Rendering all frames off-screen once, right after load, moves that cost
+// before the user's first interaction instead of during it.
 function warmUpFrames(imageArray) {
   const warmupContainer = document.createElement('div');
   warmupContainer.style.position = 'fixed';
@@ -103,19 +98,16 @@ function warmUpFrames(imageArray) {
 }
 warmUpFrames(images);
 
-// Animation state
 let animationFrameId = null;
 let isAnimating = false;
 
 function toggleMenu() {
-  // Prevent multiple clicks during animation
   if (isAnimating) return;
   menu.classList.toggle("show");
   playIconAnimation();
 }
 
 function playIconAnimation() {
-  // Cancel any running animation
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId);
   }
@@ -147,11 +139,9 @@ function animateImages(forward) {
   function animate(currentTime) {
     if (startTime === null) startTime = currentTime;
 
-    // Calculate which frame we SHOULD be on based on elapsed wall-clock time,
-    // rather than incrementing from the last frame. This is self-correcting:
-    // if the browser hitches for a moment (e.g. in-app browser throttling),
-    // we jump straight to the correct frame instead of the delay compounding
-    // across the rest of the animation.
+    // Which frame we SHOULD be on, based on elapsed time rather than the
+    // last frame shown — self-correcting if the browser hitches for a
+    // moment, instead of the delay compounding for the rest of the run.
     const elapsed = currentTime - startTime;
     const frameStep = Math.min(Math.floor(elapsed / frameDelay), lastValidIndex);
     const currentIndex = forward ? frameStep : lastValidIndex - frameStep;
@@ -207,7 +197,7 @@ if (resourceListContainer) {
     const csvFilePath = 'Assets/resources.csv';
 
     let fetchedResources = [];
-    let currentSortDirection = 'asc'; // Default sort direction
+    let currentSortDirection = 'asc';
 
     function parseCSV(csvText) {
       const lines = csvText.trim().split('\n');
