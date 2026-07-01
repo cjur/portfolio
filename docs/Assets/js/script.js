@@ -1,5 +1,3 @@
-
-
 // The carousel is plain HTML/CSS. This just nudges the animation to restart
 // in in-app browsers (Instagram, TikTok, etc.) that pause it on load.
 function restartCarouselAnimation(track) {
@@ -40,16 +38,70 @@ const images = [
   "Assets/images/menuanimation/f8.png"
 ];
 
-// Preload images
+// Preload AND fully decode every frame before we ever need to paint it.
+// Downloading a file and decoding it are two separate costs — a small file
+// can still stutter on first paint if the decode hasn't happened yet.
+// img.decode() forces that work to happen ahead of time, off the critical path.
 const preloadedImages = [];
+let imagesReady = false;
+
 function preloadImages(imageArray) {
-  imageArray.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-    preloadedImages.push(img);
+  const loadPromises = imageArray.map((src) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        if (img.decode) {
+          img.decode().then(resolve).catch(resolve);
+        } else {
+          resolve();
+        }
+      };
+      img.onerror = resolve; // never block the whole set on one bad frame
+      img.src = src;
+      preloadedImages.push(img);
+    });
+  });
+
+  Promise.all(loadPromises).then(() => {
+    imagesReady = true;
   });
 }
 preloadImages(images);
+
+// Decoding pixel data and actually PAINTING it on screen are two different
+// costs. Some browsers still do extra work (GPU texture upload, building
+// paint records) the very first time a given image is composited into a
+// layer, even if it's already decoded. That one-time cost is exactly what
+// makes the first click or two feel choppy while later toggles are smooth —
+// by then every frame has already been painted once.
+//
+// Fix: render all 8 frames off-screen once, right after load, so each one
+// is already warmed in the compositor before the user ever opens the menu.
+function warmUpFrames(imageArray) {
+  const warmupContainer = document.createElement('div');
+  warmupContainer.style.position = 'fixed';
+  warmupContainer.style.top = '-9999px';
+  warmupContainer.style.left = '-9999px';
+  warmupContainer.style.width = '1px';
+  warmupContainer.style.height = '1px';
+  warmupContainer.style.overflow = 'hidden';
+  warmupContainer.setAttribute('aria-hidden', 'true');
+
+  imageArray.forEach((src) => {
+    const warmImg = document.createElement('img');
+    warmImg.src = src;
+    // Match the real rendered size (.menu-icon is 30x30) so the browser
+    // does the same-size paint work it'll need later, not a different one.
+    warmImg.width = 30;
+    warmImg.height = 30;
+    warmupContainer.appendChild(warmImg);
+  });
+
+  // Left in the DOM permanently — it's 1px and invisible, and keeping it
+  // around means the browser has no reason to evict the cached layer.
+  document.body.appendChild(warmupContainer);
+}
+warmUpFrames(images);
 
 // Animation state
 let animationFrameId = null;
@@ -67,44 +119,56 @@ function playIconAnimation() {
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId);
   }
-  
+
   const isOpening = menu.classList.contains("show");
   animateImages(isOpening);
 }
 
 function animateImages(forward) {
   isAnimating = true;
-  
+
   const frameDelay = 120; // milliseconds per frame
-  let currentIndex = forward ? 0 : images.length - 1;
-  let lastFrameTime = performance.now();
-  
+  const lastValidIndex = images.length - 1;
+  let startTime = null;
+  let lastFrameShown = -1;
+
+  // Guard: if something goes wrong (e.g. images failed entirely), don't
+  // leave isAnimating stuck true forever and lock out future clicks.
+  const safetyTimeout = setTimeout(() => {
+    isAnimating = false;
+  }, frameDelay * images.length + 500);
+
+  function finish() {
+    clearTimeout(safetyTimeout);
+    isAnimating = false;
+    animationFrameId = null;
+  }
+
   function animate(currentTime) {
-    const elapsed = currentTime - lastFrameTime;
-    
-    if (elapsed >= frameDelay) {
+    if (startTime === null) startTime = currentTime;
+
+    // Calculate which frame we SHOULD be on based on elapsed wall-clock time,
+    // rather than incrementing from the last frame. This is self-correcting:
+    // if the browser hitches for a moment (e.g. in-app browser throttling),
+    // we jump straight to the correct frame instead of the delay compounding
+    // across the rest of the animation.
+    const elapsed = currentTime - startTime;
+    const frameStep = Math.min(Math.floor(elapsed / frameDelay), lastValidIndex);
+    const currentIndex = forward ? frameStep : lastValidIndex - frameStep;
+
+    if (frameStep !== lastFrameShown) {
+      lastFrameShown = frameStep;
       menuImage.src = images[currentIndex];
-      lastFrameTime = currentTime;
-      
-      // Update index
-      if (forward) {
-        currentIndex++;
-        if (currentIndex >= images.length) {
-          isAnimating = false;
-          return; // Stop animation
-        }
-      } else {
-        currentIndex--;
-        if (currentIndex < 0) {
-          isAnimating = false;
-          return; // Stop animation
-        }
-      }
     }
-    
+
+    if (frameStep >= lastValidIndex) {
+      finish();
+      return;
+    }
+
     animationFrameId = requestAnimationFrame(animate);
   }
-  
+
   animationFrameId = requestAnimationFrame(animate);
 }
 

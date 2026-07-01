@@ -47,6 +47,12 @@ header {
   -webkit-backdrop-filter: blur(3px) saturate(130%) brightness(1);   
   background-color:#ffffff5e;
   mix-blend-mode: luminosity;
+  /* Tells the browser which properties are about to animate on hover, so it
+     allocates the composited layer for this element up front (while the page
+     is idle) instead of lazily the first time :hover actually fires. Same
+     visual result, just moves the one-time setup cost earlier and off the
+     critical path of the user's first interaction. */
+  will-change: scale, box-shadow, border-radius;
 }
 
 header:hover {
@@ -86,22 +92,6 @@ footer:hover {
   transition: all 2s ease-in-out;
 }
 
-
-header:hover .logo {
-  text-shadow: 
-  -1px 1px 3px #ffffff,-1px 1px 20px #ffffff,
-  -1px 1px 1px #1e2c3a5e,
-  -2px 2px 2px #1e2c3a56, 
-  -4px 4px 4px #1e2c3a3f, 
-  -8px 8px 8px #1e2c3a48, 
-  -16px 16px 14px #1e2c3a48, 
-  -32px 32px 25px #1e2c3a48, 
-  -64px 64px 45px #1e2c3a48, 
-  -128px 128px 80px #1e2c3a48, 
-  -256px 256px 160px #1e2c3a48, 
-  -512px 512px 400px #1e2c3a48;
-  transition: all 2s ease-in-out;
-}
 
 .portcards:hover .logo {
   align-items: center;
@@ -482,6 +472,14 @@ button:hover .button-icon {
   width: 30px;
   height: 30px;
   position: relative;
+  /* Carves the icon out into its own stacking context and compositing layer,
+     separate from the header's mix-blend-mode + backdrop-filter surface.
+     Without this, every frame swap inside can force the browser to
+     recomposite the whole blended/blurred header, not just the small icon.
+     Purely a rendering hint — no visual change. */
+  isolation: isolate;
+  contain: paint;
+  will-change: transform;
 }
 
 .menu-icon img {
