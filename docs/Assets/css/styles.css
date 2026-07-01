@@ -421,8 +421,16 @@ button:hover .button-icon {
   display: flex;
   width: max-content;
   animation: slide 30s linear infinite;
+  /* Starts paused so it sits still (hidden behind the placeholder below)
+     instead of sliding immediately on paint. script.js adds .is-ready to
+     the .carousel wrapper once every image has actually finished loading. */
+  animation-play-state: paused;
   will-change: transform;
   backface-visibility: hidden;
+}
+
+.carousel.is-ready .carousel-track {
+  animation-play-state: running;
 }
 
 .carousel-track img {
@@ -433,20 +441,35 @@ button:hover .button-icon {
   display: block;
 }
 
+/* Loading placeholder: soft, slowly-shifting light-grey noise, drawn by JS
+   rather than loaded from a file — so it's there on the very first paint,
+   before any real carousel image has even started downloading. Sits on top
+   of the (still loading, but already in the DOM) track and fades out once
+   script.js confirms every image is ready. */
+.carousel-placeholder {
+  position: absolute;
+  /* Sized bigger than the carousel itself (clipped by its overflow:hidden)
+     so the blur's fade-to-transparent edge lands outside the visible area
+     instead of creating a see-through ring right at the carousel's border.
+     Width/height must be explicit — canvas is a replaced element and won't
+     stretch to fill its container from positioning offsets alone. */
+  top: -60px;
+  left: -60px;
+  width: calc(100% + 120px);
+  height: calc(100% + 120px);
+  z-index: 2;
+  pointer-events: none;
+  filter: blur(14px);
+  transition: opacity 0.6s ease;
+}
+
+.carousel.is-ready .carousel-placeholder {
+  opacity: 0;
+}
+
 @keyframes slide {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
-}
-
-/* Fade edges */
-.carousel::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg,  rgba(0, 0, 0, 0.3) 0%, transparent 6%),
-    linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, transparent 6%);
-  pointer-events: none;
 }
 
 @media (max-width: 600px) {

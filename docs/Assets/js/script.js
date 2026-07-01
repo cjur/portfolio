@@ -1,4 +1,3 @@
-
 // The carousel is plain HTML/CSS. This just nudges the animation to restart
 // in in-app browsers (Instagram, TikTok, etc.) that pause it on load.
 function restartCarouselAnimation(track) {
@@ -8,13 +7,81 @@ function restartCarouselAnimation(track) {
   track.style.animation = "";
 }
 
+// Draws soft, light-blue noise into the placeholder canvas, regenerating it
+// every ~1.5s for a slow, drifting feel. The canvas's own drawing buffer is
+// tiny (10x6) — CSS stretches it to fill the carousel and blurs it, which
+// is what turns sharp random pixels into big, soft, cloud-like grain.
+// Pure code, no file to fetch, so it's on screen from the very first paint.
+function startCarouselPlaceholder(canvas) {
+  if (!canvas || !canvas.getContext) return null;
+  const ctx = canvas.getContext("2d");
+  const cols = 10;
+  const rows = 6;
+  canvas.width = cols;
+  canvas.height = rows;
+
+  // Same light blue as the portcards hover gradient (#eff3ff), pushed a
+  // little lighter, with a low-contrast random brightness wobble added
+  // equally across channels so the tint/hue stays put and only the
+  // lightness varies. Tweak tint/range to taste.
+  const tint = [243, 247, 255];
+  const range = 10;
+
+  function paintNoise() {
+    const frame = ctx.createImageData(cols, rows);
+    for (let i = 0; i < frame.data.length; i += 4) {
+      const delta = Math.floor(Math.random() * range);
+      frame.data[i] = Math.min(255, tint[0] + delta);
+      frame.data[i + 1] = Math.min(255, tint[1] + delta);
+      frame.data[i + 2] = Math.min(255, tint[2] + delta);
+      frame.data[i + 3] = 255;
+    }
+    ctx.putImageData(frame, 0, 0);
+  }
+
+  paintNoise();
+  const intervalId = setInterval(paintNoise, 1500);
+  return () => clearInterval(intervalId);
+}
+
+// Waits for every image inside `track` to actually finish loading AND
+// decoding, then calls onReady — so the caller can reveal things only once
+// nothing will pop in or shift mid-slide.
+function whenImagesReady(track, onReady) {
+  if (!track) return;
+  const images = Array.from(track.querySelectorAll("img"));
+
+  const ready = images.map((img) => {
+    const whenLoaded = img.complete
+      ? Promise.resolve()
+      : new Promise((resolve) => {
+          img.addEventListener("load", resolve);
+          img.addEventListener("error", resolve); // don't block on a bad file
+        });
+
+    return whenLoaded.then(() =>
+      img.decode ? img.decode().catch(() => {}) : undefined
+    );
+  });
+
+  Promise.all(ready).then(onReady);
+}
+
+const carouselEl = document.querySelector(".carousel");
+const stopCarouselPlaceholder = carouselEl
+  ? startCarouselPlaceholder(carouselEl.querySelector(".carousel-placeholder"))
+  : null;
+
+whenImagesReady(document.querySelector(".carousel-track"), function () {
+  if (carouselEl) carouselEl.classList.add("is-ready");
+  if (stopCarouselPlaceholder) stopCarouselPlaceholder();
+});
+
 let timeout;
 window.onload = function () {
   timeout = setTimeout(function () {
     document.querySelector('body').classList.remove('pointernone');
   }, 500);
-
-  restartCarouselAnimation(document.querySelector(".carousel-track"));
 };
 
 // Restart carousel when tab becomes visible (Instagram, TikTok, etc.)
