@@ -95,138 +95,56 @@ document.addEventListener("visibilitychange", () => {
 const menu = document.getElementById("dropdownMenu");
 const menuImage = document.getElementById("menu-image");
 
-const images = [
-  "Assets/images/menuanimation/f1.png",
-  "Assets/images/menuanimation/f2.png",
-  "Assets/images/menuanimation/f3.png",
-  "Assets/images/menuanimation/f4.png",
-  "Assets/images/menuanimation/f5.png",
-  "Assets/images/menuanimation/f6.png",
-  "Assets/images/menuanimation/f7.png",
-  "Assets/images/menuanimation/f8.png"
-];
+// Menu icon: two GIFs instead of a PNG frame sequence — one that animates
+// hamburger -> X (opening), one that animates X -> hamburger (closing). A
+// GIF plays its own frames internally once its `src` loads, so none of the
+// old frame-array / preload / warm-up / requestAnimationFrame stepper is
+// needed anymore: that machinery's whole job was to hand-simulate what a
+// GIF already does by itself. Same animation, browser does the work now.
+const menuIconOpenSrc = "Assets/images/MenuIconAnimation.gif";
+const menuIconCloseSrc = "Assets/images/MenuIconAnimationBackwards.gif";
 
-// Preload AND decode every frame before it's ever painted — download and
-// decode are separate costs, and a small file can still stutter on first
-// use if only the download has finished.
-const preloadedImages = [];
-let imagesReady = false;
+// Preloads both GIFs on page load so the very first click doesn't stall on
+// a network request — same purpose as the old preloadImages(), just for 2
+// files instead of 8, so it collapses to this.
+[menuIconOpenSrc, menuIconCloseSrc].forEach((src) => {
+  const preload = new Image();
+  preload.src = src;
+});
 
-function preloadImages(imageArray) {
-  const loadPromises = imageArray.map((src) => {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => {
-        if (img.decode) {
-          img.decode().then(resolve).catch(resolve);
-        } else {
-          resolve();
-        }
-      };
-      img.onerror = resolve; // never block the whole set on one bad frame
-      img.src = src;
-      preloadedImages.push(img);
-    });
-  });
+// IMPORTANT — freezing on the last frame is NOT controlled by this file.
+// It depends on the GIF itself being exported with its loop count set to
+// "once" / "no repeat" instead of "forever." That setting lives inside
+// the GIF file and is what makes the browser stop and hold the last frame
+// instead of looping. If the icon keeps looping, re-export the two GIFs
+// with that option — no amount of JS here can override it.
 
-  Promise.all(loadPromises).then(() => {
-    imagesReady = true;
-  });
-}
-preloadImages(images);
+// There's no cross-browser JS event for "a GIF finished playing," so this
+// is a plain timer used only to stop a second click from re-triggering
+// mid-animation — it has nothing to do with the freeze itself. Set it to
+// roughly match how long the GIFs actually run.
+const MENU_ICON_ANIMATION_MS = 700;
 
-// Decoding and painting are separate costs too — some browsers do extra
-// work the first time an image is actually composited, even if decoded.
-// Rendering all frames off-screen once, right after load, moves that cost
-// before the user's first interaction instead of during it.
-function warmUpFrames(imageArray) {
-  const warmupContainer = document.createElement('div');
-  warmupContainer.style.position = 'fixed';
-  warmupContainer.style.top = '-9999px';
-  warmupContainer.style.left = '-9999px';
-  warmupContainer.style.width = '1px';
-  warmupContainer.style.height = '1px';
-  warmupContainer.style.overflow = 'hidden';
-  warmupContainer.setAttribute('aria-hidden', 'true');
-
-  imageArray.forEach((src) => {
-    const warmImg = document.createElement('img');
-    warmImg.src = src;
-    // Match the real rendered size (.menu-icon is 30x30) so the browser
-    // does the same-size paint work it'll need later, not a different one.
-    warmImg.width = 30;
-    warmImg.height = 30;
-    warmupContainer.appendChild(warmImg);
-  });
-
-  // Left in the DOM permanently — it's 1px and invisible, and keeping it
-  // around means the browser has no reason to evict the cached layer.
-  document.body.appendChild(warmupContainer);
-}
-warmUpFrames(images);
-
-let animationFrameId = null;
 let isAnimating = false;
+let animationLockTimeout = null;
 
 function toggleMenu() {
   if (isAnimating) return;
-  menu.classList.toggle("show");
-  playIconAnimation();
-}
-
-function playIconAnimation() {
-  if (animationFrameId) {
-    cancelAnimationFrame(animationFrameId);
-  }
-
-  const isOpening = menu.classList.contains("show");
-  animateImages(isOpening);
-}
-
-function animateImages(forward) {
   isAnimating = true;
 
-  const frameDelay = 120; // milliseconds per frame
-  const lastValidIndex = images.length - 1;
-  let startTime = null;
-  let lastFrameShown = -1;
+  const isOpening = !menu.classList.contains("show");
+  menu.classList.toggle("show");
 
-  // Guard: if something goes wrong (e.g. images failed entirely), don't
-  // leave isAnimating stuck true forever and lock out future clicks.
-  const safetyTimeout = setTimeout(() => {
+  // Opening and closing always alternate between the two different GIF
+  // URLs, so this is always a genuine `src` change — that's what makes the
+  // browser reload the file and replay it from frame 1 every time, with
+  // no extra reset trick required.
+  menuImage.src = isOpening ? menuIconOpenSrc : menuIconCloseSrc;
+
+  clearTimeout(animationLockTimeout);
+  animationLockTimeout = setTimeout(() => {
     isAnimating = false;
-  }, frameDelay * images.length + 500);
-
-  function finish() {
-    clearTimeout(safetyTimeout);
-    isAnimating = false;
-    animationFrameId = null;
-  }
-
-  function animate(currentTime) {
-    if (startTime === null) startTime = currentTime;
-
-    // Which frame we SHOULD be on, based on elapsed time rather than the
-    // last frame shown — self-correcting if the browser hitches for a
-    // moment, instead of the delay compounding for the rest of the run.
-    const elapsed = currentTime - startTime;
-    const frameStep = Math.min(Math.floor(elapsed / frameDelay), lastValidIndex);
-    const currentIndex = forward ? frameStep : lastValidIndex - frameStep;
-
-    if (frameStep !== lastFrameShown) {
-      lastFrameShown = frameStep;
-      menuImage.src = images[currentIndex];
-    }
-
-    if (frameStep >= lastValidIndex) {
-      finish();
-      return;
-    }
-
-    animationFrameId = requestAnimationFrame(animate);
-  }
-
-  animationFrameId = requestAnimationFrame(animate);
+  }, MENU_ICON_ANIMATION_MS);
 }
 
 
