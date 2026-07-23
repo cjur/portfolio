@@ -90,9 +90,79 @@
     .lightbox-close:hover {
       opacity: 0.6;
     }
+
+    /* ===== Carousel (adapted from the homepage) ===== */
+    .carousel {
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto 40px auto;
+      max-width: 1600px;
+      border-radius: 10px;
+      border: 1px solid #242424;
+      box-shadow: 0px 2px 0px #000000;
+      /* Clicking does nothing — the whole strip ignores pointer events */
+      pointer-events: none;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: slide 40s linear infinite;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .carousel-track img {
+      height: 260px;
+      width: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    /* JS-drawn noise placeholder, shown until images finish loading then faded */
+    .carousel-placeholder {
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: calc(100% + 120px);
+      height: calc(100% + 120px);
+      z-index: 2;
+      pointer-events: none;
+      filter: blur(14px);
+      transition: opacity 0.6s ease;
+    }
+
+    .carousel.is-ready .carousel-placeholder {
+      opacity: 0;
+    }
+
+    @keyframes slide {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 600px) {
+      .carousel-track img {
+        height: 150px;
+      }
+    }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .carousel-track {
+        animation: none;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Looping carousel (clicking does nothing) -->
+  <div class="carousel" id="carousel" aria-hidden="true">
+    <canvas class="carousel-placeholder" aria-hidden="true"></canvas>
+    <div class="carousel-track" id="carousel-track"></div>
+  </div>
 
   <h1>2026-27 Dartmouth Sports Branding Look</h1>
 
@@ -119,6 +189,7 @@
       "../Assets/images/Branding Look/This Week in Dartmouth Sports.jpg",
       "../Assets/images/Branding Look/Social (3_4)Starting5.jpg",
       "../Assets/images/Branding Look/Story (9_16)Starting5.jpg",
+      "../Assets/images/Branding Look/Gameday3.jpg",
       "../Assets/images/Branding Look/Up Next.jpg",
       "../Assets/images/Branding Look/Gameday2.jpg",
       "../Assets/images/Branding Look/Quote.jpg",
@@ -163,6 +234,72 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeLightbox();
     });
+
+    /* ===== Carousel =====
+       A curated subset keeps the top strip light and fast to load.
+       Add or remove lines freely — the loop duplicates them automatically. */
+    const carouselImages = [
+      "../Assets/images/Branding Look/Web (16_9)AOTW.jpg",
+      "../Assets/images/Branding Look/Schedule Poster MIH 2026-27.jpg",
+      "../Assets/images/Branding Look/Gameday.jpg",
+      "../Assets/images/Branding Look/Ranked.jpg",
+      "../Assets/images/Branding Look/This Week in Dartmouth Sports.jpg",
+      "../Assets/images/Branding Look/Senior Spotlight.jpg",
+      "../Assets/images/Branding Look/All-Ivy.jpg",
+      "../Assets/images/Branding Look/Quote.jpg"
+    ];
+
+    const carousel = document.getElementById("carousel");
+    const carouselTrack = document.getElementById("carousel-track");
+
+    // Build the track twice so the scroll loops seamlessly
+    [...carouselImages, ...carouselImages].forEach(path => {
+      const img = document.createElement("img");
+      img.src = path;
+      img.alt = "";
+      img.decoding = "async";
+      carouselTrack.appendChild(img);
+    });
+
+    // Soft drifting noise placeholder, drawn in JS so it shows on first paint.
+    // The carousel is already visible and scrolling; this just fades out on top.
+    (function paintPlaceholder() {
+      const canvas = carousel.querySelector(".carousel-placeholder");
+      if (!canvas || !canvas.getContext) return;
+      const ctx = canvas.getContext("2d");
+      const cols = 10, rows = 6;
+      canvas.width = cols;
+      canvas.height = rows;
+      const tint = [243, 247, 255], range = 10;
+      function noise() {
+        const frame = ctx.createImageData(cols, rows);
+        for (let i = 0; i < frame.data.length; i += 4) {
+          const d = Math.floor(Math.random() * range);
+          frame.data[i] = Math.min(255, tint[0] + d);
+          frame.data[i + 1] = Math.min(255, tint[1] + d);
+          frame.data[i + 2] = Math.min(255, tint[2] + d);
+          frame.data[i + 3] = 255;
+        }
+        ctx.putImageData(frame, 0, 0);
+      }
+      noise();
+      const id = setInterval(noise, 1500);
+
+      function reveal() {
+        carousel.classList.add("is-ready");
+        clearInterval(id);
+      }
+
+      // Fade the placeholder once images are ready — but never wait forever
+      const imgs = Array.from(carouselTrack.querySelectorAll("img"));
+      Promise.all(imgs.map(img =>
+        img.complete ? Promise.resolve()
+          : new Promise(r => { img.addEventListener("load", r); img.addEventListener("error", r); })
+      )).then(reveal);
+
+      // Safety net: reveal after 3s no matter what
+      setTimeout(reveal, 3000);
+    })();
   </script>
 
 </body>
